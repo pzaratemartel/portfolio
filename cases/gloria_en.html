@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gloria AI — Case Study | Pamela Zarate</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bk:#0C0C0C;--bk2:#141414;--bk3:#1C1C1C;--bk4:#242424;
+      --y:#FFFC86;--yd:rgba(255,252,134,0.10);--yb:rgba(255,252,134,0.25);
+      --w:#F5F4EF;--g1:#888880;--g2:#3A3A3A;--g3:#242424;--g4:#B8B8B0;
+      --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+    }
+    .portfolio{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
+
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);position:sticky;top:0;z-index:10}
+    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
+    .nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
+    .nav-back:hover{color:var(--w)}
+    .pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:30%}
+
+    .hero{padding:52px 40px 0}
+    .eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:24px}
+    .eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
+    .eyebrow span{color:var(--w)}
+    .hero-grid{display:grid;grid-template-columns:1fr 248px;gap:48px;align-items:end;margin-bottom:36px}
+    .hero-title{font-family:var(--serif);font-size:68px;font-style:italic;font-weight:300;line-height:.95;letter-spacing:-2px;color:var(--w)}
+    .hero-sub{font-size:14px;color:var(--g4);line-height:1.7;margin-top:18px;max-width:500px;font-weight:300}
+    .meta-block{}
+    .meta-item{padding:13px 0;border-bottom:1px solid var(--g2)}
+    .meta-item:first-child{border-top:1px solid var(--g2)}
+    .meta-key{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:2px}
+    .meta-val{font-size:13px;color:var(--w);font-weight:400}
+
+    .statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--g2);border-bottom:1px solid var(--g2)}
+    .stat{padding:20px 24px;border-right:1px solid var(--g2)}
+    .stat:last-child{border-right:none}
+    .stn{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--y);line-height:1;margin-bottom:4px;letter-spacing:-1px}
+    .stl{font-size:11px;color:var(--g1);line-height:1.4}
+
+    .himg{background:var(--bk3);height:240px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--g2);position:relative;overflow:hidden}
+    .himg-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+    .hbadge{position:absolute;bottom:14px;right:18px;font-size:9px;padding:4px 10px;background:var(--y);color:var(--bk);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+    .body{display:grid;grid-template-columns:1fr 232px}
+    .main{padding:48px 40px;border-right:1px solid var(--g2)}
+    .sidebar{padding:48px 24px;position:sticky;top:57px;align-self:start}
+
+    .sh{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--y);margin-bottom:16px;margin-top:44px}
+    .sh:first-child{margin-top:0}
+    .sh::after{content:'';flex:1;height:1px;background:var(--g2)}
+    .shn{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--g2)}
+
+    .bt{font-size:15px;line-height:1.85;color:var(--g4);font-weight:300;margin-bottom:18px}
+    .bt strong{color:var(--w);font-weight:500}
+
+    .bq{border-left:2px solid var(--y);padding:14px 20px;margin:28px 0;background:var(--yd)}
+    .bqt{font-family:var(--serif);font-size:22px;font-style:italic;font-weight:300;color:var(--w);line-height:1.4}
+    .bqs{font-size:11px;color:var(--g1);margin-top:6px}
+
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g2);margin:28px 0}
+    .cc{background:var(--bk2);padding:18px}
+    .ccl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
+    .cct{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+    .ccb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+    .nl{margin:18px 0 26px}
+    .ni{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--g3);align-items:flex-start}
+    .ni:last-child{border-bottom:none}
+    .nn{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--y);font-weight:300;flex-shrink:0;width:22px;line-height:1.2}
+    .nt{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+    .nb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+    .rg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--g2);margin:22px 0}
+    .rc{background:var(--bk2);padding:22px}
+    .rn{font-family:var(--serif);font-size:50px;font-weight:300;color:var(--y);line-height:1;margin-bottom:5px;letter-spacing:-1px}
+    .rl{font-size:12px;color:var(--g1);line-height:1.4}
+    .rd{font-size:12px;color:var(--g4);margin-top:5px;font-weight:300}
+
+    .iimg{background:var(--bk3);border:1px solid var(--g2);height:140px;display:flex;align-items:center;justify-content:center;margin:24px 0;position:relative}
+    .iiml{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+    .iimc{position:absolute;bottom:9px;left:12px;font-size:11px;color:var(--g1)}
+
+    .lrn{padding:18px 0;border-bottom:1px solid var(--g3)}
+    .lrn:last-child{border-bottom:none}
+    .lrt{font-size:14px;font-weight:500;color:var(--w);margin-bottom:5px}
+    .lrb{font-size:13px;color:var(--g4);line-height:1.65;font-weight:300}
+
+    .sb-sec{margin-bottom:28px}
+    .sb-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--g2)}
+    .sb-it{font-size:13px;color:var(--w);padding:7px 0;border-bottom:1px solid var(--g3);display:flex;align-items:center;gap:8px;font-weight:300}
+    .sb-it::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--y);flex-shrink:0}
+    .sb-tag{display:inline-block;font-size:10px;padding:3px 8px;background:var(--yd);color:var(--y);border:1px solid var(--yb);margin:3px 3px 3px 0;letter-spacing:.03em}
+    .sb-sn{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--y);line-height:1;margin-bottom:2px}
+    .sb-sl{font-size:11px;color:var(--g1)}
+    .sb-st{padding:11px 0;border-bottom:1px solid var(--g3)}
+    .sb-st:last-child{border-bottom:none}
+
+    .mock{display:flex;gap:10px;align-items:center}
+    .mp{width:48px;height:86px;border:1.5px solid var(--g2);border-radius:5px;background:var(--bk4);overflow:hidden}
+    .mp-bar{height:14px;background:var(--bk3);border-bottom:1px solid var(--g2)}
+    .mp-body{padding:5px;display:flex;flex-direction:column;gap:4px}
+    .ml{height:4px;border-radius:2px;background:var(--g2)}
+    .ml.y{background:var(--y);opacity:.5}
+    .md{width:140px;height:90px;border:1.5px solid var(--g2);border-radius:4px;background:var(--bk4);overflow:hidden}
+    .md-bar{height:13px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 5px;gap:3px}
+    .mdd{width:4px;height:4px;border-radius:50%;background:var(--g2)}
+    .md-body{padding:7px;display:flex;flex-direction:column;gap:4px}
+  </style>
+</head>
+<body>
+
+<div class="portfolio">
+
+<div class="nav">
+  <div class="nav-logo">pzm</div>
+  <div class="nav-back">← All cases</div>
+</div>
+<div class="pbar"><div class="pfill" style="width:28%"></div></div>
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Work · <span>Ministry of Economy · Chile</span> · 2020</div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">Designing Gloria —<br>Conversational AI</div>
+      <div class="hero-sub">How I designed the personality of an AI, conversational flows, and the architecture of a government platform that connected thousands of SMBs with their communities during COVID-19.</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Client</div><div class="meta-val">Ministry of Economy</div></div>
+      <div class="meta-item"><div class="meta-key">Year</div><div class="meta-val">2020</div></div>
+      <div class="meta-item"><div class="meta-key">Role</div><div class="meta-val">UX Consultant — Conversational Design</div></div>
+      <div class="meta-item"><div class="meta-key">Scale</div><div class="meta-val">National — entire Chile</div></div>
+    </div>
+  </div>
+</div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">+700</div><div class="stl">SMBs registered in 2 weeks</div></div>
+  <div class="stat"><div class="stn">National</div><div class="stl">coverage from launch</div></div>
+  <div class="stat"><div class="stn">24/7</div><div class="stl">Gloria always available</div></div>
+  <div class="stat"><div class="stn">5+</div><div class="stl">national media outlets</div></div>
+</div>
+<div class="himg">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div class="mock">
+      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml y" style="width:80%"></div><div class="ml" style="width:60%"></div><div class="ml y" style="width:70%"></div><div class="ml" style="width:50%"></div></div></div>
+      <div class="md"><div class="md-bar"><div class="mdd"></div><div class="mdd"></div><div class="mdd"></div></div><div class="md-body"><div class="ml y" style="height:5px;width:55%"></div><div class="ml" style="height:4px;width:80%"></div><div class="ml" style="height:4px;width:65%"></div></div></div>
+      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml" style="width:70%"></div><div class="ml y" style="width:80%"></div><div class="ml" style="width:55%"></div><div class="ml y" style="width:65%"></div></div></div>
+    </div>
+    <div class="himg-lbl">Neighborhood SMBs Platform — placeholder for real screenshots</div>
+  </div>
+  <div class="hbadge">AI UX · Conversational · Government</div>
+</div>
+<div class="body">
+<div class="main">
+  <div class="sh"><span class="shn">01</span> Context and problem</div>
+  <div class="bt">In early 2020, the Ministry of Economy was piloting a local marketplace: a platform to connect people with neighborhood businesses within a 3 km radius, through Gloria, a virtual assistant.</div>
+  <div class="bt">When the pandemic hit, the scope changed overnight. The pilot became a national program. The challenge was no longer just enabling local discovery — it was the economic survival of thousands of small businesses with no digital presence.</div>
+  <div class="twocol">
+    <div class="cc"><div class="ccl">The problem</div><div class="cct">SMBs without digital channels</div><div class="ccb">Only 13% did e-commerce. Only 46% had websites. Lockdown closed physical commerce instantly.</div></div>
+    <div class="cc"><div class="ccl">The opportunity</div><div class="cct">Conversational AI as a bridge</div><div class="ccb">An assistant that could find and recommend nearby businesses, available 24/7, without requiring an app.</div></div>
+  </div>
+  <div class="sh"><span class="shn">02</span> Defining Gloria's personality</div>
+  <div class="bt">The first thing I ruled out was defining Gloria's personality alone. I facilitated a co-creation workshop with Ministry stakeholders, SMB owners from Barrio Italia, and program coordinators. The goal was to build a character that could genuinely represent thousands of different businesses without sounding generic or corporate.</div>
+  <div class="bq">
+    <div class="bqt">"The workshop showed that both groups wanted Gloria to sound like a well-informed neighbor, not like a customer service bot."</div>
+  </div>
+  <div class="bt">Four communication pillars emerged from that workshop:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Accessible and warm</div><div class="nb">Language that works for all levels of digital literacy — no jargon or corporate tone.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Rooted in the local</div><div class="nb">Always speaks like someone who knows the neighborhood, not a centralized service.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Decisively helpful</div><div class="nb">Never leaves users in a dead end — always offers a clear next step.</div></div></div>
+    <div class="ni"><div class="nn">4</div><div><div class="nt">Transparent about limitations</div><div class="nb">Honest when she doesn't have an answer, without breaking user trust.</div></div></div>
+  </div>
+  <div class="iimg"><div class="iiml">Personality framework from workshop</div><div class="iimc">Co-creation workshop artifact — placeholder</div></div>
+  <div class="sh"><span class="shn">03</span> Conversational flows</div>
+  <div class="bt">With personality defined, I mapped all possible conversation paths. The big challenge in conversational design is anticipating intent variation: people ask the same thing in dozens of different ways, and a chatbot that doesn't recognize this creates immediate frustration.</div>
+  <div class="bt">I organized the architecture around three primary intents — product search, location-based discovery, and contact/logistics information — with explicit fallback routes and graceful failure states.</div>
+  <div class="iimg"><div class="iiml">Gloria's main conversational flow</div><div class="iimc">Intent diagram and fallback routes</div></div>
+  <div class="sh"><span class="shn">04</span> The COVID pivot</div>
+  <div class="bt">Halfway through the project, scope shifted from one Santiago district to the entire country. Key decisions I made in response:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Optional geolocation</div><div class="nb">Rural users needed to navigate by district or region, not just proximity.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Minimal onboarding for SMBs</div><div class="nb">Registration form reduced to the absolute minimum — completable on mobile, no technical knowledge required.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Explicit empty states</div><div class="nb">Clear messaging for districts without registered SMBs yet, to maintain user trust.</div></div></div>
+  </div>
+  <div class="sh"><span class="shn">05</span> Impact</div>
+  <div class="rg">
+    <div class="rc"><div class="rn">+700</div><div class="rl">SMBs in the first 2 weeks</div><div class="rd">Ministry goal: 250,000</div></div>
+    <div class="rc"><div class="rn">5+</div><div class="rl">national media outlets</div><div class="rd">Teletrece, radio, print press</div></div>
+    <div class="rc"><div class="rn">All Chile</div><div class="rl">geographic coverage</div><div class="rd">From Arica to Punta Arenas</div></div>
+    <div class="rc"><div class="rn">24/7</div><div class="rl">Gloria available</div><div class="rd">No dependency on hours or staff</div></div>
+  </div>
+  <div class="bq"><div class="bqt">"The website is easy to use and has a map with all the SMBs in the sector, plus help from a virtual assistant available every day all day."</div><div class="bqs">Chilean national press · launch coverage</div></div>
+  <div class="sh"><span class="shn">06</span> Learnings</div>
+  <div class="lrn"><div class="lrt">Personality is not a deliverable — it's a research output</div><div class="lrb">The most common mistake in conversational AI design is treating personality as a creative brief. Gloria's identity emerged from what stakeholders actually valued. That co-creation step is what made her feel authentic.</div></div>
+  <div class="lrn"><div class="lrt">Designing for failure matters more than designing for success</div><div class="lrb">The moments when the AI doesn't understand or has no answer are what define the entire experience. I spent as much time on fallback flows as on the main responses.</div></div>
+  <div class="lrn"><div class="lrt">An AI product has two groups of users</div><div class="lrb">SMBs weren't just end users — they were the data source that made Gloria useful. Designing SMB onboarding with the same care as buyer experience is what let the supply side scale quickly.</div></div>
+</div>
+<div class="sidebar">
+  <div class="sb-sec"><div class="sb-lbl">Key metrics</div><div class="sb-st"><div class="sb-sn">+700</div><div class="sb-sl">SMBs in 2 weeks</div></div><div class="sb-st"><div class="sb-sn">National</div><div class="sb-sl">Chile coverage</div></div><div class="sb-st"><div class="sb-sn">5+</div><div class="sb-sl">national media</div></div></div>
+  <div class="sb-sec"><div class="sb-lbl">Tools</div><div class="sb-it">Figma</div><div class="sb-it">Miro</div><div class="sb-it">Conversational frameworks</div></div>
+  <div class="sb-sec"><div class="sb-lbl">Disciplines</div><span class="sb-tag">AI UX</span><span class="sb-tag">Conversational Design</span><span class="sb-tag">Co-creation</span><span class="sb-tag">Information Architecture</span><span class="sb-tag">Content Strategy</span></div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

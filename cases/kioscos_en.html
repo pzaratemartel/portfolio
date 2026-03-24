@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnosing Self-Service Failures — Case Study | Pamela Zarate</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bk:#0C0C0C;--bk2:#141414;--bk3:#1C1C1C;--bk4:#242424;
+      --y:#FFFC86;--yd:rgba(255,252,134,0.10);--yb:rgba(255,252,134,0.25);
+      --w:#F5F4EF;--g1:#888880;--g2:#3A3A3A;--g3:#242424;--g4:#B8B8B0;
+      --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+    }
+    .portfolio{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
+
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);position:sticky;top:0;z-index:10}
+    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
+    .nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
+    .nav-back:hover{color:var(--w)}
+    .pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:35%}
+
+    .hero{padding:52px 40px 0}
+    .eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:24px}
+    .eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
+    .eyebrow span{color:var(--w)}
+    .hero-grid{display:grid;grid-template-columns:1fr 248px;gap:48px;align-items:end;margin-bottom:36px}
+    .hero-title{font-family:var(--serif);font-size:68px;font-style:italic;font-weight:300;line-height:.95;letter-spacing:-2px;color:var(--w)}
+    .hero-sub{font-size:14px;color:var(--g4);line-height:1.7;margin-top:18px;max-width:500px;font-weight:300}
+    .meta-block{}
+    .meta-item{padding:13px 0;border-bottom:1px solid var(--g2)}
+    .meta-item:first-child{border-top:1px solid var(--g2)}
+    .meta-key{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:2px}
+    .meta-val{font-size:13px;color:var(--w);font-weight:400}
+
+    .statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--g2);border-bottom:1px solid var(--g2)}
+    .stat{padding:20px 24px;border-right:1px solid var(--g2)}
+    .stat:last-child{border-right:none}
+    .stn{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--y);line-height:1;margin-bottom:4px;letter-spacing:-1px}
+    .stl{font-size:11px;color:var(--g1);line-height:1.4}
+
+    .himg{background:var(--bk3);height:240px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--g2);position:relative;overflow:hidden}
+    .himg-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+    .hbadge{position:absolute;bottom:14px;right:18px;font-size:9px;padding:4px 10px;background:var(--y);color:var(--bk);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+    .body{display:grid;grid-template-columns:1fr 232px}
+    .main{padding:48px 40px;border-right:1px solid var(--g2)}
+    .sidebar{padding:48px 24px;position:sticky;top:57px;align-self:start}
+
+    .sh{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--y);margin-bottom:16px;margin-top:44px}
+    .sh:first-child{margin-top:0}
+    .sh::after{content:'';flex:1;height:1px;background:var(--g2)}
+    .shn{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--g2)}
+
+    .bt{font-size:15px;line-height:1.85;color:var(--g4);font-weight:300;margin-bottom:18px}
+    .bt strong{color:var(--w);font-weight:500}
+
+    .bq{border-left:2px solid var(--y);padding:14px 20px;margin:28px 0;background:var(--yd)}
+    .bqt{font-family:var(--serif);font-size:22px;font-style:italic;font-weight:300;color:var(--w);line-height:1.4}
+    .bqs{font-size:11px;color:var(--g1);margin-top:6px}
+
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g2);margin:28px 0}
+    .cc{background:var(--bk2);padding:18px}
+    .ccl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
+    .cct{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+    .ccb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+    .nl{margin:18px 0 26px}
+    .ni{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--g3);align-items:flex-start}
+    .ni:last-child{border-bottom:none}
+    .nn{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--y);font-weight:300;flex-shrink:0;width:22px;line-height:1.2}
+    .nt{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+    .nb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+    .rg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--g2);margin:22px 0}
+    .rc{background:var(--bk2);padding:22px}
+    .rn{font-family:var(--serif);font-size:50px;font-weight:300;color:var(--y);line-height:1;margin-bottom:5px;letter-spacing:-1px}
+    .rl{font-size:12px;color:var(--g1);line-height:1.4}
+    .rd{font-size:12px;color:var(--g4);margin-top:5px;font-weight:300}
+
+    .iimg{background:var(--bk3);border:1px solid var(--g2);height:140px;display:flex;align-items:center;justify-content:center;margin:24px 0;position:relative}
+    .iiml{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+    .iimc{position:absolute;bottom:9px;left:12px;font-size:11px;color:var(--g1)}
+
+    .lrn{padding:18px 0;border-bottom:1px solid var(--g3)}
+    .lrn:last-child{border-bottom:none}
+    .lrt{font-size:14px;font-weight:500;color:var(--w);margin-bottom:5px}
+    .lrb{font-size:13px;color:var(--g4);line-height:1.65;font-weight:300}
+
+    .sb-sec{margin-bottom:28px}
+    .sb-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--g2)}
+    .sb-it{font-size:13px;color:var(--w);padding:7px 0;border-bottom:1px solid var(--g3);display:flex;align-items:center;gap:8px;font-weight:300}
+    .sb-it::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--y);flex-shrink:0}
+    .sb-tag{display:inline-block;font-size:10px;padding:3px 8px;background:var(--yd);color:var(--y);border:1px solid var(--yb);margin:3px 3px 3px 0;letter-spacing:.03em}
+    .sb-sn{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--y);line-height:1;margin-bottom:2px}
+    .sb-sl{font-size:11px;color:var(--g1)}
+    .sb-st{padding:11px 0;border-bottom:1px solid var(--g3)}
+    .sb-st:last-child{border-bottom:none}
+  </style>
+</head>
+<body>
+
+<div class="portfolio">
+
+<div class="nav">
+  <div class="nav-logo">pzm</div>
+  <div class="nav-back">← All cases</div>
+</div>
+<div class="pbar"><div class="pfill" style="width:35%"></div></div>
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Work · <span>Mastercard · Retail Banking Chile</span> · 2020–2021</div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">Diagnosing self-service<br>failures</div>
+      <div class="hero-sub">How combining expert analysis, 222 verbatim comments, and real-world guerrilla testing identified the root cause of low NPS — and produced a redesign roadmap for a Mastercard banking operator in Chilean retail.</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Client</div><div class="meta-val">Mastercard Banking Operator (NDA)</div></div>
+      <div class="meta-item"><div class="meta-key">Years</div><div class="meta-val">2020 – 2021</div></div>
+      <div class="meta-item"><div class="meta-key">Role</div><div class="meta-val">UX Consultant</div></div>
+      <div class="meta-item"><div class="meta-key">Context</div><div class="meta-val">Banking Retail · Chile</div></div>
+    </div>
+  </div>
+</div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">222</div><div class="stl">verbatim comments analyzed</div></div>
+  <div class="stat"><div class="stn">3</div><div class="stl">research methods combined</div></div>
+  <div class="stat"><div class="stn">25%</div><div class="stl">accessibility compliance (baseline)</div></div>
+  <div class="stat"><div class="stn">5</div><div class="stl">pain points with >20 mentions</div></div>
+</div>
+<div class="himg">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div style="display:flex;gap:16px;align-items:center">
+      <div style="width:80px;height:140px;border:1.5px solid var(--g2);border-radius:6px;background:var(--bk4);overflow:hidden">
+        <div style="height:20px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 8px"><div style="width:30px;height:4px;background:var(--g2);border-radius:2px"></div></div>
+        <div style="padding:8px;display:flex;flex-direction:column;gap:6px">
+          <div style="height:5px;background:var(--y);opacity:.4;border-radius:2px;width:90%"></div>
+          <div style="height:4px;background:var(--g2);border-radius:2px;width:70%"></div>
+          <div style="height:28px;background:var(--bk3);border:1px solid var(--g2);border-radius:3px;margin-top:4px"></div>
+          <div style="height:28px;background:var(--bk3);border:1px solid var(--g2);border-radius:3px"></div>
+        </div>
+      </div>
+      <div style="width:2px;height:60px;background:var(--g2)"></div>
+      <div style="width:80px;height:140px;border:1.5px solid var(--y);border-radius:6px;background:var(--bk3);overflow:hidden;opacity:.8">
+        <div style="height:20px;background:var(--bk2);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 8px"><div style="width:30px;height:4px;background:var(--y);opacity:.4;border-radius:2px"></div></div>
+        <div style="padding:8px;display:flex;flex-direction:column;gap:6px">
+          <div style="height:5px;background:var(--y);opacity:.6;border-radius:2px;width:90%"></div>
+          <div style="height:4px;background:var(--g4);opacity:.4;border-radius:2px;width:80%"></div>
+          <div style="height:28px;background:var(--bk2);border:1px solid var(--y);border-radius:3px;opacity:.5;margin-top:4px"></div>
+          <div style="height:28px;background:var(--bk2);border:1px solid var(--g2);border-radius:3px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="himg-lbl">Before / after — self-service kiosk</div>
+  </div>
+  <div class="hbadge">UX Research · WCAG · Mixed Methods</div>
+</div>
+<div class="body">
+<div class="main">
+  <div class="sh"><span class="shn">01</span> Brief and context</div>
+  <div class="bt">A Mastercard banking operator integrated into one of Chile's largest retail chains was redesigning their physical branches. Within that project, they asked us to investigate a specific problem: the self-service kiosks installed in branches were generating <strong>unusually low NPS</strong> — but nobody knew why.</div>
+  <div class="bt">The assignment was diagnosis, not redesign. They needed to understand what was broken and how to prioritize it — with enough rigor to justify development investment.</div>
+  <div class="sh"><span class="shn">02</span> Research strategy</div>
+  <div class="bt">I designed a three-method approach that would triangulate findings from different angles. The sequence was intentional: expert analysis provided the framework for interpreting verbatims, and both together shaped hypotheses for guerrilla testing.</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Expert usability analysis</div><div class="nb">Custom framework for 6 kiosk dimensions: ergonomics, accessibility, content and flows, visual layout, control, and feedback and help.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">NPS verbatim analysis</div><div class="nb">222 detractor comments, coded into two categories: pain (what's broken) and improvement (what they think they need).</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Guerrilla testing in context</div><div class="nb">Testing on real kiosks, in real branches, with real customers — kiosk usability depends on physical context, not the lab.</div></div></div>
+  </div>
+  <div class="sh"><span class="shn">03</span> Expert analysis</div>
+  <div class="bt">Overall compliance was <strong>44.7%</strong> — below the 70% threshold for functional self-service interfaces. The two weakest dimensions:</div>
+  <div class="twocol">
+    <div class="cc"><div class="ccl">Control and feedback — 25%</div><div class="cct">The critical gap</div><div class="ccb">Users had no reliable way to understand the state of their actions, recover from errors, or find help.</div></div>
+    <div class="cc"><div class="ccl">Accessibility — 36.4%</div><div class="cct">Below minimum</div><div class="ccb">Contrast ratios, touch target sizes, and legibility failed basic WCAG standards.</div></div>
+  </div>
+  <div class="bq"><div class="bqt">"The best-scoring dimensions — visual layout (57.7%) and ergonomics (54.2%) — were still below the 70% threshold. The kiosk looked acceptable but didn't work."</div></div>
+  <div class="sh"><span class="shn">04</span> Verbatim analysis: 222 voices</div>
+  <div class="bt">The client had accumulated NPS data but never systematically analyzed the open-text feedback from detractors. I coded each comment separating those describing pure pain from those proposing improvements — two radically different types of information.</div>
+  <div class="iimg"><div class="iiml">Verbatim coding example — image</div><div class="iimc">Anonymized comment with classification notes and pain cluster mapping</div></div>
+  <div class="bt">From pain comments I identified <strong>5 recurring problems with over 20 mentions each</strong> — a threshold to ensure we were tackling systemic issues, not isolated cases.</div>
+  <div class="iimg"><div class="iiml">Summary graph of 5 pain clusters — image</div><div class="iimc">Top 5 problems with >20 mentions and relative frequency</div></div>
+  <div class="sh"><span class="shn">05</span> Guerrilla testing in context</div>
+  <div class="bt">I designed and executed guerrilla testing in two metropolitan branches during peak hours — contacting over 90 customers and recruiting 10 participants. Average session duration was 10 minutes, with the longest at 17 minutes (inexperienced user) and shortest at 5 (frequent user). <strong>That variance was itself a finding.</strong></div>
+  <div class="iimg"><div class="iiml">Photos of guerrilla testing participants — image</div><div class="iimc">Real-world testing in branches in Santiago</div></div>
+  <div class="sh"><span class="shn">06</span> Diagnosis and recommendations</div>
+  <div class="bt">The primary finding: NPS problems weren't isolated incidents. They were different expressions of the same core issue — <strong>a kiosk that left users in uncertainty at every critical moment.</strong></div>
+  <div class="bt">Each pain point traced back to one of three root causes:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Ambiguous labeling</div><div class="nb">Service names and document types didn't match user mental models. Solution: card sorting from verbatim.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Missing or generic feedback</div><div class="nb">Confirmation screens didn't explain what actually happened. Solution: rewrite all status screens with 3 questions: what happened, what does it mean, what do I do.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">No recovery paths</div><div class="nb">Errors left users stranded. Solution: preview before printing, specific error messages, visible help button.</div></div></div>
+  </div>
+  <div class="iimg"><div class="iiml">Wireframe before / after — kiosk home — image</div><div class="iimc">Original screen vs proposed redesign with change annotations</div></div>
+  <div class="rg">
+    <div class="rc"><div class="rn">44.7%</div><div class="rl">global compliance baseline</div><div class="rd">Target: 70%</div></div>
+    <div class="rc"><div class="rn">5</div><div class="rl">pain clusters identified</div><div class="rd">>20 mentions each</div></div>
+    <div class="rc"><div class="rn">222</div><div class="rl">comments analyzed</div><div class="rd">July–October 2020</div></div>
+    <div class="rc"><div class="rn">3</div><div class="rl">systemic root causes</div><div class="rd">Labeling · Feedback · Recovery</div></div>
+  </div>
+  <div class="sh"><span class="shn">07</span> Learnings</div>
+  <div class="lrn"><div class="lrt">Method triangulation produces better diagnosis</div><div class="lrb">If I'd only done expert analysis, I'd have found interface problems but missed emotional context. Guerrilla testing alone could have fixed symptoms without addressing systemic root causes. The combination made the diagnosis credible and actionable.</div></div>
+  <div class="lrn"><div class="lrt">User language is the fastest path to AI problems</div><div class="lrb">Reading 222 verbatims was one of the most efficient research investments in the project. Open-text responses contained exactly the words users expected to see in the interface.</div></div>
+  <div class="lrn"><div class="lrt">One user's problem is likely many users' problem</div><div class="lrb">The client assumed low NPS meant isolated technical glitches. Research showed the opposite: every pain point was a systemic failure affecting a significant proportion of users — in predictable, fixable ways.</div></div>
+</div>
+<div class="sidebar">
+  <div class="sb-sec"><div class="sb-lbl">Key metrics</div><div class="sb-st"><div class="sb-sn">222</div><div class="sb-sl">verbatims analyzed</div></div><div class="sb-st"><div class="sb-sn">44.7%</div><div class="sb-sl">compliance baseline</div></div><div class="sb-st"><div class="sb-sn">5</div><div class="sb-sl">pain clusters</div></div></div>
+  <div class="sb-sec"><div class="sb-lbl">Tools</div><div class="sb-it">Figma</div><div class="sb-it">Heuristic framework</div><div class="sb-it">In-context testing protocol</div></div>
+  <div class="sb-sec"><div class="sb-lbl">Disciplines</div><span class="sb-tag">UX Research</span><span class="sb-tag">Usability Testing</span><span class="sb-tag">WCAG</span><span class="sb-tag">Mixed Methods</span><span class="sb-tag">Information Architecture</span></div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

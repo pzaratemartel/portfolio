@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esencial — Case Study | Pamela Zarate</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bk:#0C0C0C;--bk2:#141414;--bk3:#1C1C1C;--bk4:#242424;
+      --y:#FFFC86;--yd:rgba(255,252,134,0.10);--yb:rgba(255,252,134,0.25);
+      --w:#F5F4EF;--g1:#888880;--g2:#3A3A3A;--g3:#242424;--g4:#B8B8B0;
+      --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+    }
+    .portfolio{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
+
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);position:sticky;top:0;z-index:10}
+    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
+    .nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
+    .nav-back:hover{color:var(--w)}
+    .pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:32%}
+
+    .hero{padding:52px 40px 0}
+    .eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:24px}
+    .eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
+    .eyebrow span{color:var(--w)}
+    .hero-grid{display:grid;grid-template-columns:1fr 248px;gap:48px;align-items:end;margin-bottom:36px}
+    .hero-title{font-family:var(--serif);font-size:68px;font-style:italic;font-weight:300;line-height:.95;letter-spacing:-2px;color:var(--w)}
+    .hero-sub{font-size:14px;color:var(--g4);line-height:1.7;margin-top:18px;max-width:500px;font-weight:300}
+    .meta-block{}
+    .meta-item{padding:13px 0;border-bottom:1px solid var(--g2)}
+    .meta-item:first-child{border-top:1px solid var(--g2)}
+    .meta-key{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:2px}
+    .meta-val{font-size:13px;color:var(--w);font-weight:400}
+
+    .statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--g2);border-bottom:1px solid var(--g2)}
+    .stat{padding:20px 24px;border-right:1px solid var(--g2)}
+    .stat:last-child{border-right:none}
+    .stn{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--y);line-height:1;margin-bottom:4px;letter-spacing:-1px}
+    .stl{font-size:11px;color:var(--g1);line-height:1.4}
+
+    .himg{background:var(--bk3);height:240px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--g2);position:relative;overflow:hidden}
+    .himg-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+    .hbadge{position:absolute;bottom:14px;right:18px;font-size:9px;padding:4px 10px;background:var(--y);color:var(--bk);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+    .body{display:grid;grid-template-columns:1fr 232px}
+    .main{padding:48px 40px;border-right:1px solid var(--g2)}
+    .sidebar{padding:48px 24px;position:sticky;top:57px;align-self:start}
+
+    .sh{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--y);margin-bottom:16px;margin-top:44px}
+    .sh:first-child{margin-top:0}
+    .sh::after{content:'';flex:1;height:1px;background:var(--g2)}
+    .shn{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--g2)}
+
+    .bt{font-size:15px;line-height:1.85;color:var(--g4);font-weight:300;margin-bottom:18px}
+    .bt strong{color:var(--w);font-weight:500}
+
+    .bq{border-left:2px solid var(--y);padding:14px 20px;margin:28px 0;background:var(--yd)}
+    .bqt{font-family:var(--serif);font-size:22px;font-style:italic;font-weight:300;color:var(--w);line-height:1.4}
+    .bqs{font-size:11px;color:var(--g1);margin-top:6px}
+
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g2);margin:28px 0}
+    .cc{background:var(--bk2);padding:18px}
+    .ccl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
+    .cct{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+    .ccb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+    .nl{margin:18px 0 26px}
+    .ni{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--g3);align-items:flex-start}
+    .ni:last-child{border-bottom:none}
+    .nn{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--y);font-weight:300;flex-shrink:0;width:22px;line-height:1.2}
+    .nt{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+    .nb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+    .rg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--g2);margin:22px 0}
+    .rc{background:var(--bk2);padding:22px}
+    .rn{font-family:var(--serif);font-size:50px;font-weight:300;color:var(--y);line-height:1;margin-bottom:5px;letter-spacing:-1px}
+    .rl{font-size:12px;color:var(--g1);line-height:1.4}
+    .rd{font-size:12px;color:var(--g4);margin-top:5px;font-weight:300}
+
+    .iimg{background:var(--bk3);border:1px solid var(--g2);height:140px;display:flex;align-items:center;justify-content:center;margin:24px 0;position:relative}
+    .iiml{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+    .iimc{position:absolute;bottom:9px;left:12px;font-size:11px;color:var(--g1)}
+
+    .lrn{padding:18px 0;border-bottom:1px solid var(--g3)}
+    .lrn:last-child{border-bottom:none}
+    .lrt{font-size:14px;font-weight:500;color:var(--w);margin-bottom:5px}
+    .lrb{font-size:13px;color:var(--g4);line-height:1.65;font-weight:300}
+
+    .sb-sec{margin-bottom:28px}
+    .sb-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--g2)}
+    .sb-it{font-size:13px;color:var(--w);padding:7px 0;border-bottom:1px solid var(--g3);display:flex;align-items:center;gap:8px;font-weight:300}
+    .sb-it::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--y);flex-shrink:0}
+    .sb-tag{display:inline-block;font-size:10px;padding:3px 8px;background:var(--yd);color:var(--y);border:1px solid var(--yb);margin:3px 3px 3px 0;letter-spacing:.03em}
+    .sb-sn{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--y);line-height:1;margin-bottom:2px}
+    .sb-sl{font-size:11px;color:var(--g1)}
+    .sb-st{padding:11px 0;border-bottom:1px solid var(--g3)}
+    .sb-st:last-child{border-bottom:none}
+
+    .mock{display:flex;gap:10px;align-items:center}
+    .mp{width:48px;height:86px;border:1.5px solid var(--g2);border-radius:5px;background:var(--bk4);overflow:hidden}
+    .mp-bar{height:14px;background:var(--bk3);border-bottom:1px solid var(--g2)}
+    .mp-body{padding:5px;display:flex;flex-direction:column;gap:4px}
+    .ml{height:4px;border-radius:2px;background:var(--g2)}
+    .ml.y{background:var(--y);opacity:.5}
+    .md{width:140px;height:90px;border:1.5px solid var(--g2);border-radius:4px;background:var(--bk4);overflow:hidden}
+    .md-bar{height:13px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 5px;gap:3px}
+    .mdd{width:4px;height:4px;border-radius:50%;background:var(--g2)}
+    .md-body{padding:7px;display:flex;flex-direction:column;gap:4px}
+  </style>
+</head>
+<body>
+
+<div class="portfolio">
+
+<div class="nav">
+  <div class="nav-logo">pzm</div>
+  <div class="nav-back">← All cases</div>
+</div>
+<div class="pbar"><div class="pfill" style="width:32%"></div></div>
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Work · <span>Esencial Health Insurance · Chile</span> · 2021–2024</div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">Designing Esencial<br>from scratch</div>
+      <div class="hero-sub">How UX leadership, rapid experimentation, and team restructuring enabled us to launch a 100% digital health insurer in 6 months — and then scale it in a highly regulated industry.</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Client</div><div class="meta-val">Esencial Health Insurance</div></div>
+      <div class="meta-item"><div class="meta-key">Years</div><div class="meta-val">2021 – 2024</div></div>
+      <div class="meta-item"><div class="meta-key">Role</div><div class="meta-val">UX Lead</div></div>
+      <div class="meta-item"><div class="meta-key">Tools</div><div class="meta-val">Figma · Hotjar · Google Analytics</div></div>
+    </div>
+  </div>
+</div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">6 mo.</div><div class="stl">time to launch</div></div>
+  <div class="stat"><div class="stn">3</div><div class="stl">digital products shipped</div></div>
+  <div class="stat"><div class="stn">466+</div><div class="stl">regulatory pages internalized</div></div>
+  <div class="stat"><div class="stn">First</div><div class="stl">internal UX team built</div></div>
+</div>
+<div class="himg">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div class="mock">
+      <div class="md" style="width:200px;height:110px"><div class="md-bar"><div class="mdd"></div><div class="mdd"></div><div class="mdd"></div></div><div class="md-body" style="gap:5px"><div class="ml y" style="height:6px;width:60%"></div><div style="display:flex;gap:5px"><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div></div></div></div>
+      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml y" style="width:90%"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:80%"></div><div class="ml y" style="width:60%"></div><div class="ml" style="width:75%"></div></div></div>
+    </div>
+    <div class="himg-lbl">Plan simulation and member portal flow — placeholder</div>
+  </div>
+  <div class="hbadge">Product Design · Design System · A/B Testing</div>
+</div>
+<div class="body">
+<div class="main">
+  <div class="sh"><span class="shn">01</span> Context and challenge</div>
+  <div class="bt">Esencial was a new health insurer entering the Chilean market — a sector dominated by five established players, governed by <strong>over 466 pages of regulations</strong> from the health superintendent, and deeply resistant to digital experiences.</div>
+  <div class="bt">The founding hypothesis: a 100% digital insurer could win on experience in a market where competitors still depended on physical branches and phone calls. The constraint: launch in <strong>six months</strong> with a small team and no legacy systems.</div>
+  <div class="twocol">
+    <div class="cc"><div class="ccl">What needed building</div><div class="cct">3 products from zero</div><div class="ccb">Plan simulation, digital enrollment, member portal (reimbursements, certificates, policies), and operational back office.</div></div>
+    <div class="cc"><div class="ccl">What we had</div><div class="cct">466 pages as spec</div><div class="ccb">The regulatory compendium from the superintendent as our main input. No users to research — pre-launch product.</div></div>
+  </div>
+  <div class="sh"><span class="shn">02</span> Phase 1 — Building the MVP</div>
+  <div class="bt">With no users to research before launch, the main input was the regulatory compendium. I read it completely to identify which processes were mandatory, which were discretionary, and where there was room for simplification without compliance risk.</div>
+  <div class="bq"><div class="bqt">"That deep regulatory reading was the most important design research of the project. It let me reject stakeholder requests with specific regulatory citations — not just intuition."</div></div>
+  <div class="bt">After a <strong>complete benchmark of all 5 competing insurers</strong>, I prioritized the plan simulation flow: if a user couldn't quickly understand which plan suited them, nothing else in the product mattered. The MVP came down to 6 questions, completable in under 5 minutes.</div>
+  <div class="iimg"><div class="iiml">Simulation flow wireframes — MVP</div><div class="iimc">First version of the flow, monitored with Hotjar post-launch</div></div>
+  <div class="sh"><span class="shn">03</span> Phase 2 — Experimentation and scaling</div>
+  <div class="bt">Post-launch data made clear that the structure that worked for building didn't work for learning. I proposed and led a restructure into three functions:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Maintenance cell</div><div class="nb">Bounded scope — fixes, accessibility, and roadmap delivery without overloading the team.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Experimentation squad</div><div class="nb">Me as UX Lead + Junior UI + Senior Front + Data Analyst. Complete independence from the roadmap — design, build, test, and launch in one sprint.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Rotating mentorship</div><div class="nb">Program to train junior designers in research methods and data interpretation.</div></div></div>
+  </div>
+  <div class="iimg"><div class="iiml">Examples of A/B tests — results page and plan cards</div><div class="iimc">Variants of results page and plan card redesign</div></div>
+  <div class="sh"><span class="shn">04</span> Design system</div>
+  <div class="bt">As scope grew to include the member portal, back office, and multiple communication touchpoints, I led the definition and documentation of our Figma component library — naming conventions, interaction states, responsive behavior, and documentation standards.</div>
+  <div class="iimg"><div class="iiml">Component library in Figma — partial capture</div><div class="iimc">Component system with documented states for handoff to development</div></div>
+  <div class="sh"><span class="shn">05</span> Results</div>
+  <div class="rg">
+    <div class="rc"><div class="rn">6 mo.</div><div class="rl">full launch</div><div class="rd">From blank canvas to production product</div></div>
+    <div class="rc"><div class="rn">↑↑</div><div class="rl">Lead conversion</div><div class="rd">Post email capture experiment</div></div>
+    <div class="rc"><div class="rn">↑↑</div><div class="rl">Document downloads</div><div class="rd">After plan card redesign</div></div>
+    <div class="rc"><div class="rn">↓</div><div class="rl">Acquisition cost</div><div class="rd">Vs. traditional development (NDA)</div></div>
+  </div>
+  <div class="bq"><div class="bqt">"With the squad's results we've confirmed to management that we don't need massive resources for research — failing fast lets us deepen findings more frequently."</div><div class="bqs">Internal stakeholder review</div></div>
+  <div class="sh"><span class="shn">06</span> Learnings</div>
+  <div class="lrn"><div class="lrt">Structure determines velocity</div><div class="lrb">The highest-impact decision wasn't UI — it was team structure. Creating an independent experimentation squad unlocked iteration velocity that was impossible before.</div></div>
+  <div class="lrn"><div class="lrt">Regulation as input, not constraint</div><div class="lrb">466 pages of rules could have paralyzed us. Instead I treated them as primary research: a source of constraints that, once understood, clarified where we had freedom to simplify.</div></div>
+  <div class="lrn"><div class="lrt">Demonstrating design value in an analog organization</div><div class="lrb">Every decision needed a business argument, not a design one. Translating UX results into acquisition cost and conversion rate is what earned the team a seat at the strategy table.</div></div>
+</div>
+<div class="sidebar">
+  <div class="sb-sec"><div class="sb-lbl">Key metrics</div><div class="sb-st"><div class="sb-sn">6 mo.</div><div class="sb-sl">time to launch</div></div><div class="sb-st"><div class="sb-sn">3</div><div class="sb-sl">products shipped</div></div><div class="sb-st"><div class="sb-sn">466+</div><div class="sb-sl">regulatory pages</div></div></div>
+  <div class="sb-sec"><div class="sb-lbl">Tools</div><div class="sb-it">Figma</div><div class="sb-it">Hotjar</div><div class="sb-it">Google Analytics</div><div class="sb-it">A/B testing frameworks</div></div>
+  <div class="sb-sec"><div class="sb-lbl">Disciplines</div><span class="sb-tag">Product Design</span><span class="sb-tag">Design Systems</span><span class="sb-tag">A/B Testing</span><span class="sb-tag">UX Leadership</span><span class="sb-tag">UX Strategy</span></div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
