@@ -1,720 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pamela Zárate Martel - UX Design & Research</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bk:#0C0C0C;--bk2:#141414;--bk3:#1C1C1C;--bk4:#242424;
+      --y:#FFFC86;--yd:rgba(255,252,134,0.10);--yb:rgba(255,252,134,0.25);
+      --w:#F5F4EF;--g1:#888880;--g2:#3A3A3A;--g3:#242424;--g4:#B8B8B0;
+      --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+    }
+    body{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap');
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
+    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w);text-decoration:none}
+    .nav-links{display:flex;gap:32px}
+    .nav-link{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g1);text-decoration:none;transition:color .2s}
+    .nav-link:hover{color:var(--y)}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    .hero{padding:80px 40px;text-align:center;min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+    .hero-title{font-family:var(--serif);font-size:72px;font-style:italic;font-weight:300;line-height:1.1;letter-spacing:-2px;color:var(--w);margin-bottom:24px;max-width:900px}
+    .hero-sub{font-size:18px;color:var(--g4);line-height:1.7;max-width:600px;margin:0 auto 48px;font-weight:300}
+    .cta-button{display:inline-block;padding:14px 32px;background:var(--y);color:var(--bk);font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .2s}
+    .cta-button:hover{background:var(--w)}
 
-:root {
-  --black: #0C0C0C;
-  --black2: #141414;
-  --black3: #1C1C1C;
-  --yellow: #FFFC86;
-  --yellow-dim: rgba(255,252,134,0.12);
-  --white: #F5F4EF;
-  --gray1: #888880;
-  --gray2: #3A3A3A;
-  --gray3: #242424;
-}
+    .section{padding:60px 40px;border-top:1px solid var(--g2)}
+    .section-title{font-family:var(--serif);font-size:48px;font-style:italic;font-weight:300;letter-spacing:-1px;color:var(--w);margin-bottom:48px;max-width:600px}
 
-.portfolio { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; }
-.section-label { font-size: 12px; margin-bottom: 40px; }
+    .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:40px}
+    .case-card{background:var(--bk2);border:1px solid var(--g2);padding:28px;cursor:pointer;transition:all .3s;text-decoration:none;color:inherit}
+    .case-card:hover{background:var(--bk3);border-color:var(--y);transform:translateY(-4px)}
+    .case-year{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:10px}
+    .case-title{font-family:var(--serif);font-size:26px;font-style:italic;font-weight:300;color:var(--w);margin-bottom:12px;line-height:1.2}
+    .case-desc{font-size:14px;color:var(--g4);line-height:1.6;margin-bottom:16px}
+    .case-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .tag{display:inline-block;font-size:10px;padding:4px 10px;background:var(--yd);color:var(--y);border:1px solid var(--yb);letter-spacing:.03em}
 
-/* ── TABS ── */
-.tabs { display: flex; gap: 0; border-bottom: 1px solid var(--gray2); margin-bottom: 0; }
-.tab {
-  padding: 10px 20px;
-  font-size: 12px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  color: var(--gray1);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  letter-spacing: .04em;
-  transition: color .15s;
-  background: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-.tab.active { color: var(--yellow); border-bottom-color: var(--yellow); }
-.tab:hover:not(.active) { color: var(--white); }
+    .lang-switcher{position:fixed;bottom:40px;right:40px;display:none;gap:12px;background:var(--bk2);padding:12px 16px;border:1px solid var(--g2);border-radius:20px;z-index:100}
+    .lang-link{font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--g1);transition:color .2s}
+    .lang-link:hover,.lang-link.active{color:var(--y)}
+    .lang-sep{width:1px;background:var(--g2)}
 
-.screen { display: none; }
-.screen.active { display: block; }
+    footer{padding:40px;border-top:1px solid var(--g2);text-align:center;font-size:12px;color:var(--g1)}
+    footer a{color:var(--y);text-decoration:none}
+    footer a:hover{color:var(--w)}
 
-/* ── HOMEPAGE ── */
-.hp { background: var(--black); min-height: 600px; }
+    @media (max-width:768px){
+      .hero{padding:60px 20px}
+      .hero-title{font-size:48px}
+      .section{padding:40px 20px}
+      .lang-switcher{bottom:20px;right:20px;font-size:10px}
+    }
+  </style>
+</head>
+<body>
 
-.hp-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 40px;
-  border-bottom: 1px solid var(--gray2);
-}
-.hp-nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-style: italic;
-  color: var(--white);
-  letter-spacing: .01em;
-}
-.hp-nav-links { display: flex; gap: 28px; }
-.hp-nav-link {
-  font-size: 11px;
-  color: var(--gray1);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color .15s;
-}
-.hp-nav-link:hover { color: var(--white); }
-.hp-nav-avail {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--gray1);
-}
-.hp-nav-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--yellow);
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-
-.hp-hero {
-  padding: 64px 40px 0;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 40px;
-  align-items: end;
-}
-.hp-hero-eyebrow {
-  font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.hp-hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--yellow);
-}
-.hp-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 86px;
-  font-style: italic;
-  font-weight: 300;
-  line-height: .95;
-  letter-spacing: -2px;
-  color: var(--white);
-  margin-bottom: 28px;
-}
-.hp-name span { color: var(--yellow); }
-.hp-desc {
-  font-size: 14px;
-  color: var(--gray1);
-  line-height: 1.7;
-  max-width: 440px;
-  font-weight: 300;
-}
-.hp-hero-right {
-  padding-bottom: 8px;
-}
-.hp-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--gray2);
-}
-.hp-stat {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--gray2);
-}
-.hp-stat:last-child { border-bottom: none; }
-.hp-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 300;
-  color: var(--yellow);
-  line-height: 1;
-  margin-bottom: 3px;
-}
-.hp-stat-label {
-  font-size: 11px;
-  color: var(--gray1);
-  letter-spacing: .04em;
-}
-
-.hp-cases-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 40px 20px;
-  border-top: 1px solid var(--gray2);
-  margin-top: 48px;
-}
-.hp-cases-title {
-  font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--gray1);
-}
-.hp-cases-count {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
-  font-style: italic;
-  color: var(--gray1);
-}
-
-.hp-cases { border-top: 1px solid var(--gray2); }
-.hp-case {
-  display: grid;
-  grid-template-columns: 80px 1fr 180px 120px;
-  align-items: center;
-  padding: 22px 40px;
-  border-bottom: 1px solid var(--gray2);
-  cursor: pointer;
-  transition: background .2s;
-  gap: 24px;
-}
-.hp-case:hover { background: var(--black3); }
-.hp-case:hover .hp-case-arrow { opacity: 1; transform: translateX(0); }
-.hp-case-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
-  font-style: italic;
-  color: var(--gray2);
-}
-.hp-case-info {}
-.hp-case-title {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 3px;
-  font-family: 'Inter', sans-serif;
-}
-.hp-case-client {
-  font-size: 12px;
-  color: var(--gray1);
-}
-.hp-case-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-.hp-case-tag {
-  font-size: 10px;
-  padding: 3px 8px;
-  border: 1px solid var(--gray2);
-  color: var(--gray1);
-  letter-spacing: .04em;
-}
-.hp-case-tag.y {
-  background: var(--yellow-dim);
-  border-color: rgba(255,252,134,0.3);
-  color: var(--yellow);
-}
-.hp-case-arrow {
-  font-size: 16px;
-  color: var(--yellow);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: all .2s;
-  text-align: right;
-}
-
-/* ── CASE STUDY PAGE ── */
-.cs { background: var(--black); }
-
-.cs-hero {
-  padding: 48px 40px 0;
-  border-bottom: 1px solid var(--gray2);
-}
-.cs-breadcrumb {
-  font-size: 11px;
-  color: var(--gray1);
-  letter-spacing: .06em;
-  margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.cs-breadcrumb span { color: var(--white); }
-.cs-meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 32px;
-  gap: 40px;
-}
-.cs-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 58px;
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.0;
-  letter-spacing: -1px;
-  color: var(--white);
-  max-width: 680px;
-}
-.cs-meta-right { flex-shrink: 0; }
-.cs-meta-item { margin-bottom: 12px; }
-.cs-meta-key { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--gray1); margin-bottom: 2px; }
-.cs-meta-val { font-size: 13px; color: var(--white); }
-
-.cs-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--gray2);
-}
-.cs-stat {
-  padding: 20px 24px;
-  border-right: 1px solid var(--gray2);
-}
-.cs-stat:last-child { border-right: none; }
-.cs-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  font-weight: 300;
-  color: var(--yellow);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.cs-stat-label { font-size: 11px; color: var(--gray1); }
-
-.cs-image-hero {
-  margin: 0;
-  background: var(--black3);
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--gray2);
-  position: relative;
-  overflow: hidden;
-}
-.cs-image-placeholder {
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--gray2);
-}
-.cs-image-badge {
-  position: absolute;
-  bottom: 16px;
-  right: 20px;
-  font-size: 10px;
-  padding: 4px 10px;
-  background: var(--yellow);
-  color: var(--black);
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.cs-body {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 0;
-}
-.cs-main {
-  padding: 48px 40px;
-  border-right: 1px solid var(--gray2);
-}
-.cs-section-title {
-  font-size: 10px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.cs-section-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--gray2);
-}
-.cs-text {
-  font-size: 15px;
-  line-height: 1.8;
-  color: #B8B8B0;
-  margin-bottom: 28px;
-  font-weight: 300;
-}
-.cs-quote {
-  border-left: 2px solid var(--yellow);
-  padding: 16px 20px;
-  margin: 28px 0;
-  background: var(--yellow-dim);
-}
-.cs-quote-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--white);
-  line-height: 1.4;
-}
-.cs-image-inline {
-  background: var(--black3);
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 28px 0;
-  border: 1px solid var(--gray2);
-}
-.cs-sidebar { padding: 48px 28px; }
-.cs-sidebar-section { margin-bottom: 32px; }
-.cs-sidebar-label {
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--gray1);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--gray2);
-}
-.cs-sidebar-item {
-  font-size: 13px;
-  color: var(--white);
-  padding: 7px 0;
-  border-bottom: 1px solid var(--gray3);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.cs-sidebar-item::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--yellow);
-  flex-shrink: 0;
-}
-.cs-sidebar-tag {
-  display: inline-block;
-  font-size: 11px;
-  padding: 4px 10px;
-  background: var(--yellow-dim);
-  color: var(--yellow);
-  margin: 3px 3px 3px 0;
-  border: 1px solid rgba(255,252,134,0.2);
-  letter-spacing: .03em;
-}
-
-/* ── DESIGN SYSTEM ── */
-.ds { background: var(--black); padding: 32px 32px; }
-.ds-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.ds-card { background: var(--black3); border: 1px solid var(--gray2); padding: 16px; border-radius: 4px; }
-.ds-card-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--gray1); margin-bottom: 12px; }
-.color-swatch { height: 36px; border-radius: 2px; margin-bottom: 8px; }
-.color-name { font-size: 12px; color: var(--white); margin-bottom: 2px; }
-.color-hex { font-size: 11px; color: var(--gray1); font-family: monospace; }
-.type-sample { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--gray2); }
-.type-sample:last-child { border-bottom: none; margin-bottom: 0; }
-.type-label { font-size: 10px; color: var(--gray1); letter-spacing: .08em; margin-bottom: 4px; }
-</style>
-
-<div class="portfolio">
-
-<div class="tabs">
-  <button class="tab active" onclick="showScreen('hp')">Homepage</button>
-  <button class="tab" onclick="showScreen('cs')">Caso de estudio</button>
-  <button class="tab" onclick="showScreen('ds')">Sistema de diseño</button>
-</div>
-
-<!-- ══ HOMEPAGE ══ -->
-<div id="hp" class="screen active hp">
-  <nav class="hp-nav">
-    <div class="hp-nav-logo">pzm</div>
-    <div class="hp-nav-links">
-      <span class="hp-nav-link">Trabajo</span>
-      <span class="hp-nav-link">Proceso</span>
-      <span class="hp-nav-link">Sobre mí</span>
-      <span class="hp-nav-link">Contacto</span>
-    </div>
-    <div class="hp-nav-avail">
-      <div class="hp-nav-dot"></div>
-      <span>Disponible para proyectos</span>
-    </div>
-  </nav>
-
-  <div class="hp-hero">
-    <div>
-      <div class="hp-hero-eyebrow">Senior Product Designer · UX Consultant</div>
-      <div class="hp-name">Pamela<br>Zárate<span>.</span></div>
-      <div class="hp-desc">Diseño productos digitales que conectan personas con lo que necesitan — desde chatbots con IA para el gobierno chileno hasta servicios que vuelan en 24 países.</div>
-    </div>
-    <div class="hp-hero-right">
-      <div class="hp-stats">
-        <div class="hp-stat">
-          <div class="hp-stat-num">9+</div>
-          <div class="hp-stat-label">años de experiencia</div>
-        </div>
-        <div class="hp-stat">
-          <div class="hp-stat-num">+165%</div>
-          <div class="hp-stat-label">canje digital — LATAM Airlines</div>
-        </div>
-        <div class="hp-stat">
-          <div class="hp-stat-num">24</div>
-          <div class="hp-stat-label">países — Travel Voucher</div>
-        </div>
-        <div class="hp-stat">
-          <div class="hp-stat-num">WCAG</div>
-          <div class="hp-stat-label">2.2 AA certificada</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hp-cases-header">
-    <span class="hp-cases-title">Trabajo seleccionado</span>
-    <span class="hp-cases-count">4 casos de estudio</span>
-  </div>
-
-  <div class="hp-cases">
-    <div class="hp-case">
-      <div class="hp-case-num">01</div>
-      <div class="hp-case-info">
-        <div class="hp-case-title">De la frustración a la resolución</div>
-        <div class="hp-case-client">LATAM Airlines</div>
-      </div>
-      <div class="hp-case-tags">
-        <span class="hp-case-tag">Service design</span>
-        <span class="hp-case-tag">Omnicanal</span>
-        <span class="hp-case-tag y">+165%</span>
-      </div>
-      <div class="hp-case-arrow">→</div>
-    </div>
-    <div class="hp-case">
-      <div class="hp-case-num">02</div>
-      <div class="hp-case-info">
-        <div class="hp-case-title">Diseñando a Gloria — AI conversacional</div>
-        <div class="hp-case-client">Ministerio de Economía · Chile</div>
-      </div>
-      <div class="hp-case-tags">
-        <span class="hp-case-tag y">AI UX</span>
-        <span class="hp-case-tag">Chatbot</span>
-        <span class="hp-case-tag">Gov</span>
-      </div>
-      <div class="hp-case-arrow">→</div>
-    </div>
-    <div class="hp-case">
-      <div class="hp-case-num">03</div>
-      <div class="hp-case-info">
-        <div class="hp-case-title">Diseñando Esencial desde cero</div>
-        <div class="hp-case-client">Esencial Isapre</div>
-      </div>
-      <div class="hp-case-tags">
-        <span class="hp-case-tag">Design system</span>
-        <span class="hp-case-tag">A/B testing</span>
-        <span class="hp-case-tag">6 meses</span>
-      </div>
-      <div class="hp-case-arrow">→</div>
-    </div>
-    <div class="hp-case">
-      <div class="hp-case-num">04</div>
-      <div class="hp-case-info">
-        <div class="hp-case-title">Diagnosticar fallas en el autoservicio</div>
-        <div class="hp-case-client">Mastercard · Retail Chile</div>
-      </div>
-      <div class="hp-case-tags">
-        <span class="hp-case-tag">UX Research</span>
-        <span class="hp-case-tag">WCAG</span>
-        <span class="hp-case-tag">222 verbatims</span>
-      </div>
-      <div class="hp-case-arrow">→</div>
-    </div>
+<div class="nav">
+  <div class="nav-logo">pzm</div>
+  <div class="nav-links">
+    <a href="#work" class="nav-link" style="text-decoration:none">Work</a>
+    <a href="about_en.html" class="nav-link" style="text-decoration:none">About</a>
   </div>
 </div>
 
-<!-- ══ CASO DE ESTUDIO ══ -->
-<div id="cs" class="screen cs">
-  <div class="cs-hero">
-    <div class="cs-breadcrumb">
-      Trabajo <span>→</span> <span>De la frustración a la resolución</span>
-    </div>
-    <div class="cs-meta-row">
-      <div class="cs-title">De la frustración<br>a la resolución</div>
-      <div class="cs-meta-right">
-        <div class="cs-meta-item">
-          <div class="cs-meta-key">Cliente</div>
-          <div class="cs-meta-val">LATAM Airlines</div>
-        </div>
-        <div class="cs-meta-item">
-          <div class="cs-meta-key">Año</div>
-          <div class="cs-meta-val">2017 – 2019</div>
-        </div>
-        <div class="cs-meta-item">
-          <div class="cs-meta-key">Rol</div>
-          <div class="cs-meta-val">Content Strategist · Mentora</div>
-        </div>
-      </div>
-    </div>
-    <div class="cs-stats">
-      <div class="cs-stat">
-        <div class="cs-stat-num">+165%</div>
-        <div class="cs-stat-label">canje digital</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">−18.5%</div>
-        <div class="cs-stat-label">llamadas Contact Center</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">2.1→4.6</div>
-        <div class="cs-stat-label">satisfacción de usuarios</div>
-      </div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">5:40</div>
-        <div class="cs-stat-label">minutos vs 30 por teléfono</div>
-      </div>
-    </div>
-  </div>
+<div class="hero">
+  <h1 class="hero-title">Designing products<br>that matter</h1>
+  <p class="hero-sub">Combining rigorous research, strategic thinking, and user-centered design to solve complex problems in real-world contexts.</p>
+  <a href="#work" class="cta-button">See my work</a>
+</div>
 
-  <div class="cs-image-hero">
-    <span class="cs-image-placeholder">Hero image — mockup dispositivos o screenshot sistema</span>
-    <div class="cs-image-badge">Service Design · Omnicanal</div>
-  </div>
-
-  <div class="cs-body">
-    <div class="cs-main">
-      <div class="cs-section-title">Contexto y problema</div>
-      <div class="cs-text">LATAM emite Travel Vouchers a los pasajeros afectados por contingencias de vuelo. Del total emitido mensualmente, solo el 54% se canjeaba — y el 85% de ese porcentaje lo hacía llamando al Contact Center. Los pasajeros tenían que revivir el momento del aeropuerto, esperar en línea y depender de un tercero para completar algo que debía ser autónomo.</div>
-
-      <div class="cs-quote">
-        <div class="cs-quote-text">"El flujo digital no fallaba por mal UX. Fallaba porque el artefacto físico que activaba ese flujo estaba roto."</div>
+<div class="section" id="work">
+  <h2 class="section-title">Case studies</h2>
+  <div class="cases-grid">
+    <a href="cases/esencial_en.html" class="case-card">
+      <div class="case-year">2021 - 2024</div>
+      <div class="case-title">Esencial<br>Health Insurance</div>
+      <div class="case-desc">Launching a 100% digital insurer in 6 months in a highly regulated market.</div>
+      <div class="case-tags">
+        <span class="tag">Product Design</span>
+        <span class="tag">A/B Testing</span>
       </div>
+    </a>
 
-      <div class="cs-section-title">Investigación</div>
-      <div class="cs-text">Conduje investigación de campo en el Aeropuerto de Guarulhos, São Paulo, durante una contingencia activa. 12 entrevistas en profundidad con pasajeros, benchmark de 10 industrias (aerolíneas, bancos, Netflix, Uber) y un journey map que reveló 5 puntos de falla distribuidos en todo el ecosistema.</div>
+    <a href="cases/kioscos_en.html" class="case-card">
+      <div class="case-year">2020 - 2021</div>
+      <div class="case-title">Self-Service<br>Kiosks</div>
+      <div class="case-desc">Diagnosing root causes of low NPS using mixed-methods research.</div>
+      <div class="case-tags">
+        <span class="tag">UX Research</span>
+        <span class="tag">Mixed Methods</span>
+      </div>
+    </a>
 
-      <div class="cs-image-inline">
-        <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray2)">Journey map — imagen</span>
+    <a href="cases/gloria_en.html" class="case-card">
+      <div class="case-year">2020</div>
+      <div class="case-title">Gloria AI<br>Conversational</div>
+      <div class="case-desc">Designing AI personality and platform architecture for a government mass-scale program.</div>
+      <div class="case-tags">
+        <span class="tag">AI UX</span>
+        <span class="tag">Conversational Design</span>
       </div>
+    </a>
 
-      <div class="cs-section-title">Decisiones de diseño</div>
-      <div class="cs-text">La primera y más contraintuitiva decisión fue no empezar por la pantalla. Rediseñamos el documento físico del Travel Voucher para que el número fuera visualmente dominante y escaneable. Eso desbloqueó todo lo demás.</div>
-    </div>
-
-    <div class="cs-sidebar">
-      <div class="cs-sidebar-section">
-        <div class="cs-sidebar-label">Herramientas</div>
-        <div class="cs-sidebar-item">Figma</div>
-        <div class="cs-sidebar-item">Hotjar</div>
-        <div class="cs-sidebar-item">Google Analytics</div>
-        <div class="cs-sidebar-item">Testing en contexto</div>
+    <a href="cases/latam_en.html" class="case-card">
+      <div class="case-year">2017 - 2019</div>
+      <div class="case-title">From frustration<br>to resolution</div>
+      <div class="case-desc">Omnichannel service design increased digital redemption by 165% and satisfaction from 2.1 to 4.6.</div>
+      <div class="case-tags">
+        <span class="tag">Service Design</span>
+        <span class="tag">Content Strategy</span>
+        <span class="tag">UX Research</span>
       </div>
-      <div class="cs-sidebar-section">
-        <div class="cs-sidebar-label">Disciplinas</div>
-        <span class="cs-sidebar-tag">Service Design</span>
-        <span class="cs-sidebar-tag">UX Research</span>
-        <span class="cs-sidebar-tag">Content Strategy</span>
-        <span class="cs-sidebar-tag">Omnicanal</span>
-        <span class="cs-sidebar-tag">Accesibilidad</span>
-      </div>
-      <div class="cs-sidebar-section">
-        <div class="cs-sidebar-label">Presentado en</div>
-        <div class="cs-sidebar-item">Interaction LA 2019</div>
-      </div>
-    </div>
+    </a>
   </div>
 </div>
 
-<!-- ══ SISTEMA DE DISEÑO ══ -->
-<div id="ds" class="screen ds">
-  <div style="margin-bottom:24px">
-    <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:6px">Sistema de diseño</div>
-    <div style="font-size:14px;color:var(--gray1)">Tokens, tipografía y componentes del portafolio editorial</div>
-  </div>
-
-  <div class="ds-grid">
-    <div class="ds-card">
-      <div class="ds-card-label">Color</div>
-      <div style="margin-bottom:10px">
-        <div class="color-swatch" style="background:#0C0C0C;border:1px solid #2A2A2A"></div>
-        <div class="color-name">Black</div>
-        <div class="color-hex">#0C0C0C — fondo base</div>
-      </div>
-      <div style="margin-bottom:10px">
-        <div class="color-swatch" style="background:#FFFC86"></div>
-        <div class="color-name">Yellow</div>
-        <div class="color-hex">#FFFC86 — acento único</div>
-      </div>
-      <div style="margin-bottom:10px">
-        <div class="color-swatch" style="background:#F5F4EF"></div>
-        <div class="color-name">Off-white</div>
-        <div class="color-hex">#F5F4EF — texto principal</div>
-      </div>
-      <div>
-        <div class="color-swatch" style="background:#888880"></div>
-        <div class="color-name">Gray</div>
-        <div class="color-hex">#888880 — texto secundario</div>
-      </div>
-    </div>
-
-    <div class="ds-card">
-      <div class="ds-card-label">Tipografía</div>
-      <div class="type-sample">
-        <div class="type-label">Display / hero</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;font-weight:300;color:#F5F4EF;line-height:1">Pamela Zárate</div>
-        <div style="font-size:11px;color:var(--gray1);margin-top:4px">Cormorant Garamond Italic 300 — 72–96px</div>
-      </div>
-      <div class="type-sample">
-        <div class="type-label">Sección / caso</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#F5F4EF;line-height:1.1">De la frustración a la resolución</div>
-        <div style="font-size:11px;color:var(--gray1);margin-top:4px">Cormorant Garamond Italic 300 — 48–64px</div>
-      </div>
-      <div class="type-sample">
-        <div class="type-label">Cuerpo</div>
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:300;color:#B8B8B0;line-height:1.6">Texto de caso de estudio, descripción de proceso y contexto de proyecto.</div>
-        <div style="font-size:11px;color:var(--gray1);margin-top:4px">Inter Light 300 — 14–16px</div>
-      </div>
-      <div>
-        <div class="type-label">Labels / nav</div>
-        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:#888880;letter-spacing:.12em;text-transform:uppercase">TRABAJO SELECCIONADO</div>
-        <div style="font-size:11px;color:var(--gray1);margin-top:4px">Inter Regular — 10–12px, uppercase, tracking</div>
-      </div>
-    </div>
-
-    <div class="ds-card">
-      <div class="ds-card-label">Principios</div>
-      <div class="type-sample">
-        <div class="type-label">El amarillo como firma</div>
-        <div style="font-size:13px;color:#B8B8B0;line-height:1.6">Solo aparece en: eyebrow labels, métricas, acentos activos y el punto animado de disponibilidad. Nunca como fondo de sección.</div>
-      </div>
-      <div class="type-sample">
-        <div class="type-label">Líneas, no bordes</div>
-        <div style="font-size:13px;color:#B8B8B0;line-height:1.6">Separadores de 1px en #3A3A3A. Sin border-radius en elementos estructurales. Sólo en los tags pequeños.</div>
-      </div>
-      <div class="type-sample">
-        <div class="type-label">Imágenes en negro</div>
-        <div style="font-size:13px;color:#B8B8B0;line-height:1.6">Screenshots en blanco se muestran sobre fondo #1C1C1C con 1px border. Mockups oscuros van sin marco. Nunca fondo blanco suelto.</div>
-      </div>
-      <div>
-        <div class="type-label">Métricas como tipografía</div>
-        <div style="font-size:13px;color:#B8B8B0;line-height:1.6">Los números impactantes (+165%, 4.6, 24 países) usan Cormorant Garamond en amarillo — son parte del diseño, no solo datos.</div>
-      </div>
-    </div>
+<div class="section">
+  <h2 class="section-title">About</h2>
+  <div style="max-width:600px;font-size:15px;line-height:1.8;color:var(--g4)">
+    <p style="margin-bottom:16px">I'm a UX design and research consultant with 8+ years of experience designing products that solve real problems in complex contexts — from government platforms connecting thousands of SMBs to health insurers operating within highly regulated markets.</p>
+    <p style="margin-bottom:16px">My work combines rigor in research, strategic thinking, and disciplined execution. I've led design teams, built design systems, and translated research findings into measurable business decisions.</p>
+    <p>Core strengths: Conversational design, UX Research, Product Design, A/B testing, Design Systems, UX Leadership.</p>
   </div>
 </div>
 
+<div class="lang-switcher">
+  <span class="lang-link" style="cursor:default;opacity:0.5">ES</span>
+  <div class="lang-sep"></div>
+  <a href="#" class="lang-link active">EN</a>
 </div>
 
-<script>
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-}
-</script>
+<footer>
+  <p>© 2024 Pamela Zárate Martel</p>
+  <p style="margin-top:12px;font-size:11px">
+    <a href="https://www.linkedin.com/in/pamzaratemartel/" target="_blank">LinkedIn</a>
+  </p>
+</footer>
+
+</body>
+</html>

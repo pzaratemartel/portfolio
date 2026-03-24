@@ -16,7 +16,10 @@
     .portfolio{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
 
     .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
-    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
+    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w);text-decoration:none}
+    .nav-links{display:flex;gap:32px;align-items:center}
+    .nav-link{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g1);text-decoration:none;transition:color .2s}
+    .nav-link:hover{color:var(--w)}
     .nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
     .nav-back:hover{color:var(--w)}
     .pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:0%;transition:width 0.1s ease}
@@ -109,8 +112,11 @@
 <div class="portfolio">
 
 <div class="nav">
-  <div class="nav-logo">pzm</div>
-  <a href="../index_en.html" class="nav-back" style="text-decoration:none;color:inherit">← All cases</a>
+  <a href="../index_en.html" class="nav-logo" style="text-decoration:none">pzm</a>
+  <div class="nav-links">
+    <a href="../index_en.html" class="nav-link" style="text-decoration:none">Work</a>
+    <a href="../about_en.html" class="nav-link" style="text-decoration:none">About</a>
+  </div>
 </div>
 <div class="pbar"><div class="pfill"></div></div>
 <div class="hero">

@@ -41,9 +41,12 @@
   backdrop-filter: blur(8px);
   z-index: 10;
 }
-.nav-logo { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--white); }
+.nav-logo { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--white); text-decoration: none; }
 .nav-back { font-size: 11px; color: var(--g1); letter-spacing: .06em; cursor: pointer; display: flex; align-items: center; gap: 6px; }
 .nav-back:hover { color: var(--white); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-link { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--g1); text-decoration: none; transition: color .2s; }
+.nav-link:hover { color: var(--white); }
 
 /* ── PROGRESS BAR ── */
 .pbar { height: 2px; background: var(--g2); width: 100%; }
@@ -315,8 +318,11 @@
 <div class="cs">
 
 <div class="nav">
-  <div class="nav-logo">pzm</div>
-  <a href="../index_en.html" class="nav-back" style="text-decoration:none;color:inherit">← All cases</a>
+  <a href="../index_en.html" class="nav-logo" style="text-decoration:none">pzm</a>
+  <div class="nav-links">
+    <a href="../index_en.html" class="nav-link" style="text-decoration:none">Work</a>
+    <a href="../about_en.html" class="nav-link" style="text-decoration:none">About</a>
+  </div>
 </div>
 <div class="pbar"><div class="pfill"></div></div>
 <div class="hero">
