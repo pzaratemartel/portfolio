@@ -168,6 +168,7 @@
   <div class="bt">This project had no clear blueprint. Designing an AI chatbot personality for a government platform at national scale required balancing trust, warmth, inclusivity and functional clarity — all in a context where many of our users had limited experience with digital services.</div>
   <div class="sh"><span class="shn">03</span> Defining Gloria's personality</div>
   <div class="bt">Rather than defining Gloria's personality unilaterally, I facilitated a co-creation workshop with Ministry stakeholders, SME owners from Barrio Italia, and program managers. The goal was to build a character that could authentically represent thousands of different small businesses without feeling generic or corporate.</div>
+  <div class="bt">The workshop used a structured personality matrix with two dimensions: positive traits (what Gloria should embody) and negative traits (what Gloria must never feel like). Participants diverged individually before converging as a group, which surfaced genuine tensions between what government officials wanted and what SME owners felt was authentic to their community.</div>
   <div class="bq">
     <div class="bqt">"Both groups — shoppers and business owners — needed Gloria to feel like a knowledgeable neighbor, not a customer service bot."</div>
   </div>
@@ -194,8 +195,10 @@
     <div class="ni"><div class="nn">1</div><div><div class="nt">Removed geolocation as a hard dependency</div><div class="nb">Users in rural areas needed to browse by commune or region, not just by proximity</div></div></div>
     <div class="ni"><div class="nn">2</div><div><div class="nt">Simplified SME registration</div><div class="nb">Form reduced to the absolute minimum viable data set required to appear on the platform</div></div></div>
     <div class="ni"><div class="nn">3</div><div><div class="nt">Added explicit empty-state messaging</div><div class="nb">For communes with no registered SMEs yet, to set correct expectations without discouraging users</div></div></div>
+    <div class="ni"><div class="nn">4</div><div><div class="nt">Scaled conversational flows</div><div class="nb">Scaled conversational flows to handle a broader range of product categories as more diverse businesses joined</div></div></div>
   </div>
   <div class="sh"><span class="shn">06</span> Impact</div>
+  <div class="bt">Pymes de Barrio launched nationally in July 2020, announced personally by the Minister of Economy. The platform became one of the most visible government digital initiatives of the pandemic period in Chile.</div>
   <div class="rg">
     <div class="rc"><div class="rn">+700</div><div class="rl">SMEs in first 2 weeks</div><div class="rd">vs 250K Ministry target</div></div>
     <div class="rc"><div class="rn">National</div><div class="rl">geographic coverage</div><div class="rd">All regions — Arica to Punta Arenas</div></div>
@@ -203,11 +206,12 @@
     <div class="rc"><div class="rn">24/7</div><div class="rl">Gloria available</div><div class="rd">No dependency on hours or staff</div></div>
   </div>
   <div class="bq"><div class="bqt">"The website is easy to use and has a map where you can identify all the SMEs in a given sector, but it also offers the help of a virtual assistant, a robot available every day and at all hours."</div><div class="bqs">Chilean national press · launch coverage</div></div>
+  <div class="bt">The Ministry also secured preferential logistics partnerships with Rappi, Pedidos Ya, ChileExpress, Beat and Correos de Chile — which meant that the SME onboarding flow I designed needed to communicate these partnership benefits clearly without adding cognitive load to an already complex registration process.</div>
   <img src="../files/gloria/Gloria-6.jpg" alt="Gloria AI — platform impact" class="cs-img">
   <div class="sh"><span class="shn">07</span> Learnings</div>
-  <div class="lrn"><div class="lrt">Personality is not a design deliverable — it's a research output</div><div class="lrb">The biggest mistake in conversational AI design is treating personality as a creative brief. Gloria's character was grounded in what real stakeholders — including the SME owners who would be represented by her — actually valued. That co-creation step is what made her feel authentic.</div></div>
+  <div class="lrn"><div class="lrt">Personality is not a design deliverable — it's a research output</div><div class="lrb">The biggest mistake in conversational AI design is treating personality as a creative brief. Gloria's character was grounded in what real stakeholders — including the SME owners who would be represented by her — actually valued. That co-creation step is what made her feel authentic rather than corporate.</div></div>
   <div class="lrn"><div class="lrt">Designing for failure is more important than designing for success</div><div class="lrb">In a conversational interface, the moments when the AI doesn't understand or doesn't have an answer are the moments that define the entire experience. I spent as much time on Gloria's fallback flows and empty states as on her primary responses.</div></div>
-  <div class="lrn"><div class="lrt">AI products have two user groups: the humans talking to it, and the humans powering it</div><div class="lrb">SME owners were not just end users of the platform — they were the data source that made Gloria useful. Designing the SME onboarding experience with the same care as the consumer experience was what allowed the supply side to scale quickly.</div></div>
+  <div class="lrn"><div class="lrt">AI products have two user groups: the humans talking to it, and the humans powering it</div><div class="lrb">SME owners were not just end users of the platform — they were the data source that made Gloria useful. Designing the SME onboarding experience with the same care as the consumer experience was what allowed the supply side to scale quickly. An AI assistant is only as good as the data architecture behind it.</div></div>
 </div>
 <div class="sidebar">
   <div class="sb-sec"><div class="sb-lbl">Key metrics</div><div class="sb-st"><div class="sb-sn">+700</div><div class="sb-sl">SMBs in 2 weeks</div></div><div class="sb-st"><div class="sb-sn">National</div><div class="sb-sl">Chile coverage</div></div><div class="sb-st"><div class="sb-sn">5+</div><div class="sb-sl">national media</div></div></div>

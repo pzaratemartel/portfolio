@@ -100,6 +100,8 @@
     .sb-sl{font-size:11px;color:var(--g1)}
     .sb-st{padding:11px 0;border-bottom:1px solid var(--g3)}
     .sb-st:last-child{border-bottom:none}
+    .cs-img{width:100%;display:block;border:1px solid var(--g2);margin:24px 0}
+    .cs-img-group{display:flex;flex-direction:column;gap:16px;margin:24px 0}
     .next-case{border-top:1px solid var(--g2);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--bk2)}
     .next-case:hover{background:var(--bk3)}
     .next-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
@@ -140,79 +142,82 @@
   <div class="stat"><div class="stn">25%</div><div class="stl">accessibility compliance (baseline)</div></div>
   <div class="stat"><div class="stn">5</div><div class="stl">pain points with >20 repetitions</div></div>
 </div>
-<div class="himg">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-    <div style="display:flex;gap:16px;align-items:center">
-      <div style="width:80px;height:140px;border:1.5px solid var(--g2);border-radius:6px;background:var(--bk4);overflow:hidden">
-        <div style="height:20px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 8px"><div style="width:30px;height:4px;background:var(--g2);border-radius:2px"></div></div>
-        <div style="padding:8px;display:flex;flex-direction:column;gap:6px">
-          <div style="height:5px;background:var(--y);opacity:.4;border-radius:2px;width:90%"></div>
-          <div style="height:4px;background:var(--g2);border-radius:2px;width:70%"></div>
-          <div style="height:28px;background:var(--bk3);border:1px solid var(--g2);border-radius:3px;margin-top:4px"></div>
-          <div style="height:28px;background:var(--bk3);border:1px solid var(--g2);border-radius:3px"></div>
-        </div>
-      </div>
-      <div style="width:2px;height:60px;background:var(--g2)"></div>
-      <div style="width:80px;height:140px;border:1.5px solid var(--y);border-radius:6px;background:var(--bk3);overflow:hidden;opacity:.8">
-        <div style="height:20px;background:var(--bk2);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 8px"><div style="width:30px;height:4px;background:var(--y);opacity:.4;border-radius:2px"></div></div>
-        <div style="padding:8px;display:flex;flex-direction:column;gap:6px">
-          <div style="height:5px;background:var(--y);opacity:.6;border-radius:2px;width:90%"></div>
-          <div style="height:4px;background:var(--g4);opacity:.4;border-radius:2px;width:80%"></div>
-          <div style="height:28px;background:var(--bk2);border:1px solid var(--y);border-radius:3px;opacity:.5;margin-top:4px"></div>
-          <div style="height:28px;background:var(--bk2);border:1px solid var(--g2);border-radius:3px"></div>
-        </div>
-      </div>
-    </div>
-    <div class="himg-lbl">Before / after — self-service kiosk</div>
-  </div>
-  <div class="hbadge">UX Research · WCAG · Mixed Methods</div>
-</div>
+<img src="../files/kioscos/CAT-1.png" alt="Self-service kiosk — overview" style="width:100%;display:block;border-bottom:1px solid var(--g2);">
 <div class="body">
 <div class="main">
   <div class="sh"><span class="shn">01</span> Brief and context</div>
   <div class="bt">A Mastercard banking operator integrated into one of Chile's largest retail chains was redesigning their physical branches. Within that project, they asked us to investigate a specific problem: the self-service kiosks installed in branches were generating <strong>unusually low NPS</strong> — but nobody knew why.</div>
   <div class="bt">The assignment was diagnosis, not redesign. They needed to understand what was broken and how to prioritize it — with enough rigor to justify development investment.</div>
-  <div class="sh"><span class="shn">02</span> Research strategy</div>
-  <div class="bt">I designed a three-method approach that would triangulate findings from different angles. The sequence was intentional: expert analysis provided the framework for interpreting verbatims, and both together shaped hypotheses for guerrilla testing.</div>
+  <div class="bt">The scope covered the full kiosk interface: usability, interaction design, information architecture, accessibility, content labelling, and the match between what users expected to accomplish and what the kiosk actually let them do.</div>
+  <div class="sh"><span class="shn">02</span> Research strategy: three lenses, one problem</div>
+  <div class="bt">Rather than starting with the interface, I designed a three-method research approach that would let us triangulate findings from different angles. Each method was chosen to answer a specific type of question:</div>
+  <div class="bt">The sequencing was deliberate: the expert analysis gave us a framework for interpreting the verbatims, and both together shaped the hypotheses we tested in the guerrilla sessions. By the time we ran the in-person tests, we already knew which flows were most likely to fail — we were validating, not exploring blind.</div>
   <div class="nl">
     <div class="ni"><div class="nn">1</div><div><div class="nt">Expert usability analysis</div><div class="nb">Custom framework for 6 kiosk dimensions: ergonomics, accessibility, content and flows, visual layout, control, and feedback and help.</div></div></div>
     <div class="ni"><div class="nn">2</div><div><div class="nt">NPS verbatim analysis</div><div class="nb">222 detractor comments, coded into two categories: pain (what's broken) and improvement (what they think they need).</div></div></div>
     <div class="ni"><div class="nn">3</div><div><div class="nt">Guerrilla testing in context</div><div class="nb">Testing on real kiosks, in real branches, with real customers — kiosk usability depends on physical context, not the lab.</div></div></div>
   </div>
-  <div class="sh"><span class="shn">03</span> Expert analysis</div>
-  <div class="bt">Overall compliance was <strong>44.7%</strong> — below the 70% threshold for functional self-service interfaces. The two weakest dimensions:</div>
+  <div class="sh"><span class="shn">03</span> Expert usability analysis</div>
+  <div class="bt">I developed a custom evaluation framework covering six dimensions relevant to kiosk-specific interfaces: ergonomics, accessibility, content and flows, layout and visual design, control, and feedback and help.</div>
+  <div class="bt">Each dimension was scored on a three-point scale: fully meets the criteria, partially meets, or does not meet. Items that didn't apply to kiosk-format interfaces were excluded.</div>
+  <div class="bt">The results were striking. Overall compliance was <strong>44.7%</strong> — below the 70% threshold we set as the minimum for a functional self-service interface. The two weakest dimensions:</div>
   <div class="twocol">
-    <div class="cc"><div class="ccl">Control and feedback — 25%</div><div class="cct">The critical gap</div><div class="ccb">Users had no reliable way to understand the state of their actions, recover from errors, or find help.</div></div>
-    <div class="cc"><div class="ccl">Accessibility — 36.4%</div><div class="cct">Below minimum</div><div class="ccb">Contrast ratios, touch target sizes, and legibility failed basic WCAG standards.</div></div>
+    <div class="cc"><div class="ccl">Control, feedback and help — 25%</div><div class="cct">The critical gap</div><div class="ccb">Users had no reliable way to understand the status of their actions, recover from errors, or find help when stuck.</div></div>
+    <div class="cc"><div class="ccl">Accessibility — 36.4%</div><div class="cct">Below minimum</div><div class="ccb">Contrast ratios, touch target sizes and text legibility failed basic standards, with particular issues for users with visual or motor impairments.</div></div>
   </div>
-  <div class="bq"><div class="bqt">"The best-scoring dimensions — visual layout (57.7%) and ergonomics (54.2%) — were still below the 70% threshold. The kiosk looked acceptable but didn't work."</div></div>
+  <div class="bq"><div class="bqt">"The highest-scoring dimensions — layout and visual design (57.7%) and ergonomics (54.2%) — still fell below the 70% functional threshold. The kiosk looked acceptable but didn't work."</div></div>
+  <img src="../files/kioscos/CAT-2.png" alt="Expert analysis — compliance results" class="cs-img">
   <div class="sh"><span class="shn">04</span> Verbatim analysis: 222 voices</div>
-  <div class="bt">The client had accumulated NPS data but never systematically analyzed the open-text feedback from detractors. I coded each comment separating those describing pure pain from those proposing improvements — two radically different types of information.</div>
-  <div class="iimg"><div class="iiml">Verbatim coding example — image</div><div class="iimc">Anonymized comment with classification notes and pain cluster mapping</div></div>
+  <div class="bt">The client had accumulated NPS data across their branch network but had never systematically analyzed the open-text responses from detractor scores. I reviewed 222 comments from detractor users collected between July and October 2020, across branches in different regions.</div>
+  <div class="bt">I coded each comment into two categories: pain-focused (describing a bad experience without suggesting improvement) and improvement-focused (describing a bad experience with a suggested fix). This distinction was methodologically important — pain comments tell you what's broken, improvement comments tell you what users think they need, which are two different things.</div>
+  <img src="../files/kioscos/CAT-3.png" alt="Verbatim coding — anonymized comment with classification notes" class="cs-img">
   <div class="bt">From pain comments I identified <strong>5 recurring problems with over 20 mentions each</strong> — a threshold to ensure we were tackling systemic issues, not isolated cases.</div>
-  <div class="iimg"><div class="iiml">Summary graph of 5 pain clusters — image</div><div class="iimc">Top 5 problems with >20 mentions and relative frequency</div></div>
-  <div class="sh"><span class="shn">05</span> Guerrilla testing in context</div>
-  <div class="bt">I designed and executed guerrilla testing in two metropolitan branches during peak hours — contacting over 90 customers and recruiting 10 participants. Average session duration was 10 minutes, with the longest at 17 minutes (inexperienced user) and shortest at 5 (frequent user). <strong>That variance was itself a finding.</strong></div>
-  <div class="iimg"><div class="iiml">Photos of guerrilla testing participants — image</div><div class="iimc">Real-world testing in branches in Santiago</div></div>
-  <div class="sh"><span class="shn">06</span> Diagnosis and recommendations</div>
-  <div class="bt">The primary finding: NPS problems weren't isolated incidents. They were different expressions of the same core issue — <strong>a kiosk that left users in uncertainty at every critical moment.</strong></div>
-  <div class="bt">Each pain point traced back to one of three root causes:</div>
+  <div class="cs-img-group">
+    <img src="../files/kioscos/CAT-4.png" alt="Pain clusters summary — top 5 problems" class="cs-img" style="margin:0">
+    <img src="../files/kioscos/CAT-5.png" alt="Pain clusters frequency chart" class="cs-img" style="margin:0">
+  </div>
+  <div class="sh"><span class="shn">05</span> In-context guerrilla testing</div>
+  <div class="bt"><strong>Test design</strong></div>
+  <div class="bt">Because a lab test was outside the project budget, I designed and executed a guerrilla test directly at in-branch kiosks — the actual devices, in real context, with real customers. This was the right call: kiosk usability is highly dependent on physical context, lighting, time pressure and the emotional state of someone who has just come in to sort out a financial issue.</div>
+  <div class="bt">We tested across two branches in Santiago's Metropolitan Region during peak hours — 11am to 2pm on two consecutive days — contacting 90+ customers and recruiting 10 willing participants. Each session lasted an average of 10 minutes, with the longest session (a first-time user) running 17 minutes and the shortest (a frequent user) at 5 minutes. This variance in itself was a finding: <strong>the interface penalised inexperienced users disproportionately.</strong></div>
+  <div class="cs-img-group">
+    <img src="../files/kioscos/CAT-6.png" alt="Guerrilla testing — in-branch session" class="cs-img" style="margin:0">
+    <img src="../files/kioscos/CAT-7.png" alt="Guerrilla testing — participant interaction" class="cs-img" style="margin:0">
+  </div>
+  <div class="bt"><strong>Hypotheses tested</strong></div>
   <div class="nl">
-    <div class="ni"><div class="nn">1</div><div><div class="nt">Ambiguous labeling</div><div class="nb">Service names and document types didn't match user mental models. Solution: card sorting from verbatim.</div></div></div>
-    <div class="ni"><div class="nn">2</div><div><div class="nt">Missing or generic feedback</div><div class="nb">Confirmation screens didn't explain what actually happened. Solution: rewrite all status screens with 3 questions: what happened, what does it mean, what do I do.</div></div></div>
-    <div class="ni"><div class="nn">3</div><div><div class="nt">No recovery paths</div><div class="nb">Errors left users stranded. Solution: preview before printing, specific error messages, visible help button.</div></div></div>
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Users understand what information they'll get from the first profile view (ID only).</div><div class="nb"><strong>UNDETERMINED</strong> — Some users understood the distinction between view types; others skipped directly to the detailed view without testing the simpler one.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Users can identify the purpose of each screen within the first few seconds.</div><div class="nb"><strong>UNDETERMINED</strong> — Expert users had no difficulty. First-time users could not quickly differentiate what each screen was for.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Users expect the kiosk to be advisory only — not to resolve issues.</div><div class="nb"><strong>CONFIRMED</strong> — All participants confirmed their expectations were informational. For resolution, they preferred to speak with a person.</div></div></div>
+    <div class="ni"><div class="nn">4</div><div><div class="nt">Users understand the difference between a payment coupon and an account statement.</div><div class="nb"><strong>REJECTED</strong> — Only expert users could distinguish them by label. All others differentiated them only after printing both — a costly and frustrating discovery path.</div></div></div>
+    <div class="ni"><div class="nn">5</div><div><div class="nt">Feedback modules help users understand what is happening in the flow.</div><div class="nb"><strong>REJECTED</strong> — Users consistently ignored status and confirmation screens. The feedback language was too generic to communicate what had actually happened.</div></div></div>
+  </div>
+  <div class="sh"><span class="shn">06</span> Key findings and diagnosis</div>
+  <div class="bt">The most important insight from combining all three research methods was this: the NPS problems were not isolated incidents caused by individual interface failures. They were different expressions of the same unified problem — <strong>a kiosk that left users uncertain at every critical moment.</strong></div>
+  <div class="bt">Users didn't know what they'd get when they selected a service. They didn't understand what was happening when they completed an action. They couldn't distinguish between document types without printing them. And when something went wrong, there was no recovery path they could find independently.</div>
+  <div class="bt">Every pain point in the NPS comments traced back to one of three root causes:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Ambiguous labelling</div><div class="nb">Service names and document types didn't match user mental models.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Absent or generic feedback</div><div class="nb">Confirmation and status screens didn't tell users what had actually happened.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">No recovery paths</div><div class="nb">Errors left users stranded, with no clear next action.</div></div></div>
   </div>
   <div class="iimg"><div class="iiml">Wireframe before / after — kiosk home — image</div><div class="iimc">Original screen vs proposed redesign with change annotations</div></div>
   <div class="rg">
     <div class="rc"><div class="rn">44.7%</div><div class="rl">global compliance baseline</div><div class="rd">Target: 70%</div></div>
     <div class="rc"><div class="rn">5</div><div class="rl">pain clusters identified</div><div class="rd">>20 mentions each</div></div>
     <div class="rc"><div class="rn">222</div><div class="rl">comments analyzed</div><div class="rd">July–October 2020</div></div>
-    <div class="rc"><div class="rn">3</div><div class="rl">systemic root causes</div><div class="rd">Labeling · Feedback · Recovery</div></div>
+    <div class="rc"><div class="rn">3</div><div class="rl">systemic root causes</div><div class="rd">Labelling · Feedback · Recovery</div></div>
   </div>
-  <div class="sh"><span class="shn">07</span> Learnings</div>
-  <div class="lrn"><div class="lrt">Method triangulation produces better diagnosis</div><div class="lrb">If I'd only done expert analysis, I'd have found interface problems but missed emotional context. Guerrilla testing alone could have fixed symptoms without addressing systemic root causes. The combination made the diagnosis credible and actionable.</div></div>
-  <div class="lrn"><div class="lrt">User language is the fastest path to AI problems</div><div class="lrb">Reading 222 verbatims was one of the most efficient research investments in the project. Open-text responses contained exactly the words users expected to see in the interface.</div></div>
-  <div class="lrn"><div class="lrt">One user's problem is likely many users' problem</div><div class="lrb">The client assumed low NPS meant isolated technical glitches. Research showed the opposite: every pain point was a systemic failure affecting a significant proportion of users — in predictable, fixable ways.</div></div>
+  <div class="sh"><span class="shn">07</span> Design recommendations</div>
+  <div class="lrn"><div class="lrt">Information architecture and labelling</div><div class="lrb">The service menu was reorganised to match the way users described their tasks, not the internal product taxonomy. Card sorting data from the verbatim analysis informed the new category structure. Services were renamed to match natural language — the terms users actually used in their open-text NPS responses.</div></div>
+  <div class="lrn"><div class="lrt">Feedback system redesign</div><div class="lrb">Every transaction confirmation and status screen was rewritten to answer three questions explicitly: what just happened, what it means for the user, and what they should do next (if anything). Loaders were replaced with progress indicators showing step position within the flow. Error states were redesigned to be specific rather than generic.</div></div>
+  <div class="lrn"><div class="lrt">Flow simplification</div><div class="lrb">The main service flows were reduced in steps by consolidating screens that required sequential decisions with no real separation of purpose. The document distinction problem — users unable to differentiate between a payment coupon and an account statement until after printing — was addressed by adding a preview with a plain-language description of each document before the user committed to printing.</div></div>
+  <div class="lrn"><div class="lrt">Accessibility improvements</div><div class="lrb">Contrast ratios across the interface were raised to WCAG AA compliance. Touch targets were enlarged to meet minimum sizing for users with motor impairments. High-value text elements — account numbers, balances, and document names — were increased in size and weight to be legible at the typical standing distance from a kiosk screen.</div></div>
+  <div class="bt">These recommendations were delivered to the client as a prioritised roadmap, with each improvement mapped to the specific NPS pain points it addressed — giving the product team a clear, evidence-backed case for development investment.</div>
+  <div class="sh"><span class="shn">08</span> Key learnings</div>
+  <div class="lrn"><div class="lrt">Mixed-methods triangulation produces better diagnoses than any single method</div><div class="lrb">If I had only run the expert analysis, I would have found the interface problems but missed the emotional context behind them. If I had only done the guerrilla test, I might have fixed the symptoms visible in the session without addressing the systemic root cause. The combination — each method informing the next — was what made the diagnosis credible and actionable.</div></div>
+  <div class="lrn"><div class="lrt">User language is the most direct route to IA problems</div><div class="lrb">Reading 222 verbatim comments was one of the most efficient research investments in this project. The open-text responses contained the exact words users expected to see in the interface — and the gap between those words and the actual labels in the kiosk was the primary cause of the navigation failures we observed in testing.</div></div>
+  <div class="lrn"><div class="lrt">A problem that affects one user likely affects many</div><div class="lrb">The client suspected 'something was wrong' but assumed the low NPS was caused by edge-case technical failures. The research showed the opposite: every pain point in the verbatims was a systemic design failure that affected a significant proportion of users. The kiosk wasn't broken for some people — it was broken for most people, in predictable and fixable ways.</div></div>
 </div>
 <div class="sidebar">
   <div class="sb-sec"><div class="sb-lbl">Key metrics</div><div class="sb-st"><div class="sb-sn">222</div><div class="sb-sl">verbatims analyzed</div></div><div class="sb-st"><div class="sb-sn">44.7%</div><div class="sb-sl">compliance baseline</div></div><div class="sb-st"><div class="sb-sn">5</div><div class="sb-sl">pain clusters</div></div></div>
