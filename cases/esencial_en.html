@@ -15,7 +15,7 @@
     }
     .portfolio{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
 
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);position:sticky;top:0;z-index:10}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
     .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
     .nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
     .nav-back:hover{color:var(--w)}
@@ -99,15 +99,20 @@
     .sb-st:last-child{border-bottom:none}
 
     .mock{display:flex;gap:10px;align-items:center}
-    .mp{width:48px;height:86px;border:1.5px solid var(--g2);border-radius:5px;background:var(--bk4);overflow:hidden}
+    .mp{width:48px;height:86px;border:1.5px solid var(--g2);background:var(--bk4);overflow:hidden}
     .mp-bar{height:14px;background:var(--bk3);border-bottom:1px solid var(--g2)}
     .mp-body{padding:5px;display:flex;flex-direction:column;gap:4px}
-    .ml{height:4px;border-radius:2px;background:var(--g2)}
+    .ml{height:4px;background:var(--g2)}
     .ml.y{background:var(--y);opacity:.5}
-    .md{width:140px;height:90px;border:1.5px solid var(--g2);border-radius:4px;background:var(--bk4);overflow:hidden}
+    .md{width:140px;height:90px;border:1.5px solid var(--g2);background:var(--bk4);overflow:hidden}
     .md-bar{height:13px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 5px;gap:3px}
     .mdd{width:4px;height:4px;border-radius:50%;background:var(--g2)}
     .md-body{padding:7px;display:flex;flex-direction:column;gap:4px}
+    .next-case{border-top:1px solid var(--g2);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--bk2)}
+    .next-case:hover{background:var(--bk3)}
+    .next-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
+    .next-title{font-family:var(--serif);font-size:28px;font-style:italic;font-weight:300;color:var(--w)}
+    .next-arrow{font-size:28px;color:var(--y)}
   </style>
 </head>
 <body>
@@ -196,6 +201,16 @@
 </div>
 
 </div>
+
+<a href="kioscos_en.html" style="text-decoration:none;color:inherit">
+<div class="next-case">
+  <div>
+    <div class="next-label">Next case</div>
+    <div class="next-title">Diagnosing Self-Service<br>Failures</div>
+  </div>
+  <div class="next-arrow">→</div>
+</div>
+</a>
 
 </body>
 </html>
