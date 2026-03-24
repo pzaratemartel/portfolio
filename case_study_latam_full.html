@@ -1,0 +1,580 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:  #0C0C0C;
+  --black2: #141414;
+  --black3: #1C1C1C;
+  --black4: #242424;
+  --yellow: #FFFC86;
+  --ydim:   rgba(255,252,134,0.10);
+  --ybord:  rgba(255,252,134,0.25);
+  --white:  #F5F4EF;
+  --g1: #888880;
+  --g2: #3A3A3A;
+  --g3: #242424;
+  --g4: #B8B8B0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+}
+
+.cs { background: var(--black); color: var(--white); font-family: var(--sans); font-weight: 300; }
+
+/* ── NAV ── */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  border-bottom: 1px solid var(--g2);
+  position: sticky;
+  top: 0;
+  background: rgba(12,12,12,0.95);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.nav-logo { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--white); }
+.nav-back { font-size: 11px; color: var(--g1); letter-spacing: .06em; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+.nav-back:hover { color: var(--white); }
+.nav-links { display: flex; gap: 24px; }
+.nav-link { font-size: 11px; color: var(--g1); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.nav-link:hover { color: var(--white); }
+
+/* ── HERO ── */
+.hero { padding: 56px 40px 0; }
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--g1);
+  margin-bottom: 28px;
+}
+.hero-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--yellow); }
+.hero-eyebrow span { color: var(--white); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-size: 72px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: .95;
+  letter-spacing: -2px;
+  color: var(--white);
+}
+.hero-subtitle {
+  font-size: 14px;
+  color: var(--g4);
+  line-height: 1.7;
+  margin-top: 20px;
+  max-width: 520px;
+  font-weight: 300;
+}
+.hero-meta { display: flex; flex-direction: column; gap: 0; }
+.hero-meta-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--g2);
+}
+.hero-meta-item:first-child { border-top: 1px solid var(--g2); }
+.hero-meta-key { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g1); margin-bottom: 3px; }
+.hero-meta-val { font-size: 13px; color: var(--white); font-weight: 400; }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--g2);
+  border-bottom: 1px solid var(--g2);
+  margin-top: 0;
+}
+.stat {
+  padding: 22px 28px;
+  border-right: 1px solid var(--g2);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--yellow);
+  line-height: 1;
+  margin-bottom: 5px;
+  letter-spacing: -1px;
+}
+.stat-label { font-size: 11px; color: var(--g1); line-height: 1.4; }
+
+/* ── HERO IMAGE ── */
+.hero-img {
+  background: var(--black3);
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--g2);
+  position: relative;
+  overflow: hidden;
+}
+.hero-img-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.hero-img-label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--g2); }
+
+.hero-img-mockup {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.mockup-phone {
+  width: 52px; height: 92px;
+  border: 1.5px solid var(--g2);
+  border-radius: 6px;
+  background: var(--black4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.mockup-phone-bar { height: 16px; background: var(--black3); border-bottom: 1px solid var(--g2); }
+.mockup-phone-screen { flex:1; display: flex; flex-direction: column; gap: 4px; padding: 5px; }
+.mockup-line { height: 5px; background: var(--g2); border-radius: 2px; }
+.mockup-line.y { background: var(--yellow); opacity: .6; }
+.mockup-line.short { width: 60%; }
+.mockup-line.med { width: 80%; }
+.mockup-desktop {
+  width: 160px; height: 96px;
+  border: 1.5px solid var(--g2);
+  border-radius: 4px;
+  background: var(--black4);
+  overflow: hidden;
+}
+.mockup-desktop-bar { height: 14px; background: var(--black3); border-bottom: 1px solid var(--g2); display: flex; align-items: center; padding: 0 6px; gap: 4px; }
+.mockup-desktop-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--g2); }
+.mockup-desktop-screen { padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+
+.hero-img-badge {
+  position: absolute;
+  bottom: 16px; right: 20px;
+  font-size: 9px;
+  padding: 4px 10px;
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ── BODY ── */
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+}
+.main { padding: 52px 40px; border-right: 1px solid var(--g2); }
+.sidebar { padding: 52px 28px; position: sticky; top: 57px; align-self: start; }
+
+/* section headers */
+.sec-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 18px;
+  margin-top: 48px;
+}
+.sec-head:first-child { margin-top: 0; }
+.sec-head::after { content: ''; flex: 1; height: 1px; background: var(--g2); }
+.sec-num { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--g2); }
+
+.body-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--g4);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.body-text strong { color: var(--white); font-weight: 500; }
+
+/* quote */
+.blockquote {
+  border-left: 2px solid var(--yellow);
+  padding: 16px 22px;
+  margin: 32px 0;
+  background: var(--ydim);
+}
+.blockquote-text {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.45;
+}
+.blockquote-source { font-size: 11px; color: var(--g1); margin-top: 8px; letter-spacing: .04em; }
+
+/* two-col insight */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--g2); margin: 32px 0; }
+.col-card { background: var(--black2); padding: 20px; }
+.col-card-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g1); margin-bottom: 10px; }
+.col-card-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+.col-card-text { font-size: 13px; color: var(--g4); line-height: 1.6; font-weight: 300; }
+
+/* inline image */
+.inline-img {
+  background: var(--black3);
+  border: 1px solid var(--g2);
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 28px 0;
+  position: relative;
+}
+.inline-img-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g2); }
+.inline-img-caption { position: absolute; bottom: 10px; left: 14px; font-size: 11px; color: var(--g1); }
+
+/* numbered list */
+.num-list { margin: 20px 0 28px; counter-reset: item; }
+.num-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--g3);
+  align-items: flex-start;
+}
+.num-item:last-child { border-bottom: none; }
+.num-item-n {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--yellow);
+  font-weight: 300;
+  flex-shrink: 0;
+  width: 24px;
+  line-height: 1.2;
+}
+.num-item-content {}
+.num-item-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+.num-item-text { font-size: 13px; color: var(--g4); line-height: 1.6; font-weight: 300; }
+
+/* results section */
+.results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--g2); margin: 24px 0; }
+.result-card { background: var(--black2); padding: 24px; }
+.result-num { font-family: var(--serif); font-size: 52px; font-weight: 300; color: var(--yellow); line-height: 1; margin-bottom: 6px; letter-spacing: -1px; }
+.result-label { font-size: 12px; color: var(--g1); line-height: 1.4; }
+.result-detail { font-size: 12px; color: var(--g4); margin-top: 6px; font-weight: 300; }
+
+/* learning */
+.learning {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--g3);
+}
+.learning:last-child { border-bottom: none; }
+.learning-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+.learning-text { font-size: 13px; color: var(--g4); line-height: 1.65; font-weight: 300; }
+
+/* next case */
+.next-case {
+  border-top: 1px solid var(--g2);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: var(--black2);
+}
+.next-case:hover { background: var(--black3); }
+.next-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--g1); margin-bottom: 8px; }
+.next-title { font-family: var(--serif); font-size: 28px; font-style: italic; font-weight: 300; color: var(--white); }
+.next-arrow { font-size: 28px; color: var(--yellow); }
+
+/* sidebar */
+.sb-section { margin-bottom: 32px; }
+.sb-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--g1); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--g2); }
+.sb-item { font-size: 13px; color: var(--white); padding: 8px 0; border-bottom: 1px solid var(--g3); display: flex; align-items: center; gap: 8px; font-weight: 300; }
+.sb-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
+.sb-tag { display: inline-block; font-size: 10px; padding: 3px 8px; background: var(--ydim); color: var(--yellow); border: 1px solid var(--ybord); margin: 3px 3px 3px 0; letter-spacing: .03em; }
+.sb-stat { padding: 12px 0; border-bottom: 1px solid var(--g3); }
+.sb-stat:last-child { border-bottom: none; }
+.sb-stat-num { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--yellow); line-height: 1; margin-bottom: 2px; }
+.sb-stat-label { font-size: 11px; color: var(--g1); }
+
+/* progress bar scroll simulation */
+.progress-bar { height: 2px; background: var(--g2); position: sticky; top: 56px; z-index: 9; }
+.progress-fill { height: 100%; background: var(--yellow); width: 35%; transition: width .1s; }
+</style>
+
+<div class="cs">
+
+<div class="nav">
+  <div class="nav-logo">pzm</div>
+  <div class="nav-back">← Todos los casos</div>
+  <div class="nav-links">
+    <span class="nav-link">Trabajo</span>
+    <span class="nav-link">Proceso</span>
+    <span class="nav-link">Contacto</span>
+  </div>
+</div>
+
+<div class="progress-bar"><div class="progress-fill"></div></div>
+
+<div class="hero">
+  <div class="hero-eyebrow">
+    <div class="hero-eyebrow-dot"></div>
+    Trabajo · <span>LATAM Airlines</span> · 2017–2019
+  </div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">De la frustración<br>a la resolución</div>
+      <div class="hero-subtitle">Cómo un enfoque de service design — que abarcó documentos físicos, flujos digitales, emails y Contact Center — aumentó el canje digital un 165% y elevó la satisfacción de 2.1 a 4.6.</div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-key">Cliente</div>
+        <div class="hero-meta-val">LATAM Airlines</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-key">Año</div>
+        <div class="hero-meta-val">2017 – 2019</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-key">Rol</div>
+        <div class="hero-meta-val">UX Content Strategist · Mentora</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-key">Presentado en</div>
+        <div class="hero-meta-val">Interaction LA 2019</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">+165%</div><div class="stat-label">canje digital desde el lanzamiento</div></div>
+  <div class="stat"><div class="stat-num">−18.5%</div><div class="stat-label">llamadas al Contact Center</div></div>
+  <div class="stat"><div class="stat-num">2.1→4.6</div><div class="stat-label">puntuación de satisfacción</div></div>
+  <div class="stat"><div class="stat-num">5:40</div><div class="stat-label">min promedio vs 30 por teléfono</div></div>
+</div>
+
+<div class="hero-img">
+  <div class="hero-img-inner">
+    <div class="hero-img-mockup">
+      <div class="mockup-phone">
+        <div class="mockup-phone-bar"></div>
+        <div class="mockup-phone-screen">
+          <div class="mockup-line y med"></div>
+          <div class="mockup-line short"></div>
+          <div class="mockup-line med"></div>
+          <div class="mockup-line y short"></div>
+          <div class="mockup-line med"></div>
+        </div>
+      </div>
+      <div class="mockup-desktop">
+        <div class="mockup-desktop-bar">
+          <div class="mockup-desktop-dot"></div>
+          <div class="mockup-desktop-dot"></div>
+          <div class="mockup-desktop-dot"></div>
+        </div>
+        <div class="mockup-desktop-screen">
+          <div class="mockup-line y" style="height:6px;border-radius:2px;background:var(--yellow);opacity:.5;width:60%"></div>
+          <div class="mockup-line" style="height:4px;border-radius:2px;background:var(--g2);width:80%"></div>
+          <div class="mockup-line" style="height:4px;border-radius:2px;background:var(--g2);width:90%"></div>
+          <div style="height:8px"></div>
+          <div style="display:flex;gap:6px">
+            <div style="flex:1;height:28px;background:var(--black3);border:1px solid var(--g2);border-radius:2px"></div>
+            <div style="flex:1;height:28px;background:var(--black3);border:1px solid var(--g2);border-radius:2px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-bar"></div>
+        <div class="mockup-phone-screen">
+          <div class="mockup-line med"></div>
+          <div class="mockup-line y short"></div>
+          <div class="mockup-line med"></div>
+          <div class="mockup-line short"></div>
+          <div class="mockup-line y med"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img-label">Diseño responsivo — placeholder para screenshots reales</div>
+  </div>
+  <div class="hero-img-badge">Service Design · Omnicanal</div>
+</div>
+
+<div class="body-grid">
+<div class="main">
+
+  <div class="sec-head"><span class="sec-num">01</span> Contexto y problema</div>
+  <div class="body-text">LATAM emite Travel Vouchers a los pasajeros afectados por contingencias de vuelo — atrasos, cancelaciones, desvíos. Del total de vouchers emitidos mensualmente, <strong>solo el 54% se canjeaba</strong>. Y de ese porcentaje, el 85% lo hacía llamando al Contact Center — lo que significaba que los pasajeros tenían que revivir el momento del aeropuerto, esperar en línea y depender de un tercero para completar algo que debía ser autónomo.</div>
+
+  <div class="two-col">
+    <div class="col-card">
+      <div class="col-card-label">El problema de negocio</div>
+      <div class="col-card-title">Alto costo operacional</div>
+      <div class="col-card-text">Solo 15% de canje digital. 85% por Contact Center. Sin visibilidad de por qué fallaba el canal digital.</div>
+    </div>
+    <div class="col-card">
+      <div class="col-card-label">El problema humano</div>
+      <div class="col-card-title">Pasajeros ya frustrados</div>
+      <div class="col-card-text">El documento físico tenía el número en un formato difícil de transcribir. Nadie sabía qué era un Travel Voucher ni dónde encontrarlo online.</div>
+    </div>
+  </div>
+
+  <div class="sec-head"><span class="sec-num">02</span> Investigación y descubrimiento</div>
+  <div class="body-text">Para entender el problema en toda su dimensión, realicé investigación de campo en el Aeropuerto Internacional de Guarulhos en São Paulo — el hub más importante de LATAM — <strong>durante una contingencia activa</strong>. Eso me dio acceso directo al momento de entrega del voucher: el estado emocional de los pasajeros afectados y cómo interactuaban con el documento físico.</div>
+
+  <div class="blockquote">
+    <div class="blockquote-text">"El flujo digital no fallaba por mal UX. Fallaba porque el artefacto físico que activaba ese flujo estaba roto."</div>
+  </div>
+
+  <div class="body-text">Realicé <strong>12 entrevistas en profundidad</strong> con pasajeros que habían recibido un Travel Voucher entre marzo y septiembre de 2018. El journey map reveló 5 puntos de falla diferenciados, cada uno correspondiendo a un touchpoint distinto del ecosistema. Ninguno era un problema puramente digital.</div>
+
+  <div class="inline-img">
+    <div class="inline-img-label">Journey map completo — imagen</div>
+    <div class="inline-img-caption">Journey map de la experiencia completa — desde la contingencia en aeropuerto hasta la transferencia bancaria</div>
+  </div>
+
+  <div class="body-text">En paralelo, un <strong>benchmark de 10 servicios</strong> de distintas industrias — aerolíneas, bancos, aseguradoras, Netflix, Airbnb, Spotify y Uber — mostró qué tenían en común los flujos de reembolso que mejor funcionaban: confirmaban la identidad temprano, establecían expectativas claras sobre timing y enviaban actualizaciones proactivas.</div>
+
+  <div class="sec-head"><span class="sec-num">03</span> Decisiones de diseño</div>
+
+  <div class="num-list">
+    <div class="num-item">
+      <div class="num-item-n">1</div>
+      <div class="num-item-content">
+        <div class="num-item-title">Primero, rediseñar el documento físico</div>
+        <div class="num-item-text">La primera y más contraintuitiva decisión fue no empezar por la pantalla. Rediseñamos el Travel Voucher impreso para que el número de canje fuera visualmente dominante, escaneable e inequívoco. Cambiamos el formato, aumentamos el contraste y reestructuramos la jerarquía del documento.</div>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="num-item-n">2</div>
+      <div class="num-item-content">
+        <div class="num-item-title">Antes de mejorar el flujo, mejorar la encontrabilidad</div>
+        <div class="num-item-text">Un card sorting y una encuesta masiva mostraron que los usuarios no asociaban "Travel Voucher" con "reembolso". Movimos el punto de entrada para que coincidiera con los modelos mentales reales, lo que aumentó el descubrimiento orgánico del servicio sin gasto en marketing.</div>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="num-item-n">3</div>
+      <div class="num-item-content">
+        <div class="num-item-title">El flujo digital de canje</div>
+        <div class="num-item-text">Diseñé la pantalla de ingreso con un placeholder mostrando el formato exacto del voucher y un lightbox contextual indicando dónde está el número en el documento físico. Un formulario responsivo con requisitos bancarios de 24 países, accesible con lectores de pantalla en todo el recorrido.</div>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="num-item-n">4</div>
+      <div class="num-item-content">
+        <div class="num-item-title">Cerrar el loop — emails retroactivos</div>
+        <div class="num-item-text">Pasajeros con vouchers sin canjear recibieron un email rediseñado: el número del voucher grande y central, en dos idiomas. Testeado en clientes móvil, escritorio y webmail en 6 idiomas antes del despliegue global.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inline-img">
+    <div class="inline-img-label">Wireframes del flujo digital — imagen</div>
+    <div class="inline-img-caption">Wireframes lo-fi y diseño final del flujo de canje digital</div>
+  </div>
+
+  <div class="sec-head"><span class="sec-num">04</span> Resultados</div>
+  <div class="body-text">El producto lanzó globalmente en <strong>24 países, 6 idiomas</strong> y formularios bancarios para más de 90 países. Completamente autónomo — sin dependencias de agentes ni Contact Center.</div>
+
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-num">+165%</div>
+      <div class="result-label">Canje digital</div>
+      <div class="result-detail">Desde el lanzamiento hasta 3 meses después</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num">4.6</div>
+      <div class="result-label">Satisfacción (de 2.1)</div>
+      <div class="result-detail">2,503 respuestas en múltiples países</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num">−18.5%</div>
+      <div class="result-label">Llamadas al Contact Center</div>
+      <div class="result-detail">Para consultas de canje y estado</div>
+    </div>
+    <div class="result-card">
+      <div class="result-num">5:40</div>
+      <div class="result-label">Minutos promedio</div>
+      <div class="result-detail">Vs. 30+ minutos por teléfono</div>
+    </div>
+  </div>
+
+  <div class="blockquote">
+    <div class="blockquote-text">"El proceso es fácil y sencillo. Cero problemas, gracias." / "Está todo muy bien explicado, no necesita modificaciones."</div>
+    <div class="blockquote-source">Usuarios post-lanzamiento · selección de 2,503 respuestas</div>
+  </div>
+
+  <div class="sec-head"><span class="sec-num">05</span> Aprendizajes</div>
+
+  <div class="learning">
+    <div class="learning-title">El product design es un problema de sistema, no de pantalla</div>
+    <div class="learning-text">El caso del Travel Voucher es el ejemplo más claro en mi carrera de que el trabajo de diseño más impactante a veces ocurre lejos de la pantalla. Arreglar el documento físico fue la decisión que desbloqueó todo lo demás.</div>
+  </div>
+  <div class="learning">
+    <div class="learning-title">El contexto emocional lo determina todo</div>
+    <div class="learning-text">Diseñar para pasajeros en contingencia significa diseñar para personas en un estado emocional bajo. Cada decisión de copy, cada estado de carga, cada mensaje de error se evaluaba contra una pregunta: ¿esto hace sentir que la aerolínea me está cuidando?</div>
+  </div>
+  <div class="learning">
+    <div class="learning-title">La consistencia entre touchpoints es una decisión estratégica</div>
+    <div class="learning-text">Coordinar el rediseño del documento físico, el flujo digital, los emails y los scripts del Contact Center requirió alinear stakeholders de múltiples áreas. Ese trabajo de alineación fue tan parte del diseño como los archivos de Figma.</div>
+  </div>
+
+</div>
+
+<div class="sidebar">
+  <div class="sb-section">
+    <div class="sb-label">Resultados clave</div>
+    <div class="sb-stat"><div class="sb-stat-num">+165%</div><div class="sb-stat-label">canje digital</div></div>
+    <div class="sb-stat"><div class="sb-stat-num">4.6/5</div><div class="sb-stat-label">satisfacción</div></div>
+    <div class="sb-stat"><div class="sb-stat-num">24</div><div class="sb-stat-label">países al lanzamiento</div></div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Herramientas</div>
+    <div class="sb-item">Figma</div>
+    <div class="sb-item">Hotjar</div>
+    <div class="sb-item">Google Analytics</div>
+    <div class="sb-item">Testing en contexto</div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Disciplinas</div>
+    <span class="sb-tag">Service Design</span>
+    <span class="sb-tag">UX Research</span>
+    <span class="sb-tag">Content Strategy</span>
+    <span class="sb-tag">Omnicanal</span>
+    <span class="sb-tag">Accesibilidad</span>
+    <span class="sb-tag">Information Architecture</span>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Presentado en</div>
+    <div class="sb-item">Interaction LA 2019</div>
+  </div>
+</div>
+</div>
+
+<div class="next-case">
+  <div>
+    <div class="next-label">Siguiente caso</div>
+    <div class="next-title">Diseñando a Gloria —<br>AI conversacional</div>
+  </div>
+  <div class="next-arrow">→</div>
+</div>
+
+</div>

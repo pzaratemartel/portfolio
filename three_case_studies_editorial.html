@@ -1,0 +1,445 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bk:#0C0C0C;--bk2:#141414;--bk3:#1C1C1C;--bk4:#242424;
+  --y:#FFFC86;--yd:rgba(255,252,134,0.10);--yb:rgba(255,252,134,0.25);
+  --w:#F5F4EF;--g1:#888880;--g2:#3A3A3A;--g3:#242424;--g4:#B8B8B0;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+}
+.portfolio{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--g2);background:var(--bk2)}
+.tab{padding:11px 22px;font-size:11px;color:var(--g1);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;letter-spacing:.06em;text-transform:uppercase;background:none;border-top:none;border-left:none;border-right:none;transition:color .15s}
+.tab.on{color:var(--y);border-bottom-color:var(--y)}
+.tab:hover:not(.on){color:var(--w)}
+.scr{display:none}.scr.on{display:block}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);position:sticky;top:0;z-index:10}
+.nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
+.nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
+.nav-back:hover{color:var(--w)}
+.pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:30%}
+
+/* HERO */
+.hero{padding:52px 40px 0}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:24px}
+.eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--y);flex-shrink:0}
+.eyebrow span{color:var(--w)}
+.hero-grid{display:grid;grid-template-columns:1fr 248px;gap:48px;align-items:end;margin-bottom:36px}
+.hero-title{font-family:var(--serif);font-size:68px;font-style:italic;font-weight:300;line-height:.95;letter-spacing:-2px;color:var(--w)}
+.hero-sub{font-size:14px;color:var(--g4);line-height:1.7;margin-top:18px;max-width:500px;font-weight:300}
+.meta-block{}
+.meta-item{padding:13px 0;border-bottom:1px solid var(--g2)}
+.meta-item:first-child{border-top:1px solid var(--g2)}
+.meta-key{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:2px}
+.meta-val{font-size:13px;color:var(--w);font-weight:400}
+
+/* STATS */
+.statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--g2);border-bottom:1px solid var(--g2)}
+.stat{padding:20px 24px;border-right:1px solid var(--g2)}
+.stat:last-child{border-right:none}
+.stn{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--y);line-height:1;margin-bottom:4px;letter-spacing:-1px}
+.stl{font-size:11px;color:var(--g1);line-height:1.4}
+
+/* HERO IMAGE */
+.himg{background:var(--bk3);height:240px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--g2);position:relative;overflow:hidden}
+.himg-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+.hbadge{position:absolute;bottom:14px;right:18px;font-size:9px;padding:4px 10px;background:var(--y);color:var(--bk);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* BODY */
+.body{display:grid;grid-template-columns:1fr 232px}
+.main{padding:48px 40px;border-right:1px solid var(--g2)}
+.sidebar{padding:48px 24px;position:sticky;top:57px;align-self:start}
+
+/* SECTION HEADS */
+.sh{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--y);margin-bottom:16px;margin-top:44px}
+.sh:first-child{margin-top:0}
+.sh::after{content:'';flex:1;height:1px;background:var(--g2)}
+.shn{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--g2)}
+
+.bt{font-size:15px;line-height:1.85;color:var(--g4);font-weight:300;margin-bottom:18px}
+.bt strong{color:var(--w);font-weight:500}
+
+/* QUOTE */
+.bq{border-left:2px solid var(--y);padding:14px 20px;margin:28px 0;background:var(--yd)}
+.bqt{font-family:var(--serif);font-size:22px;font-style:italic;font-weight:300;color:var(--w);line-height:1.4}
+.bqs{font-size:11px;color:var(--g1);margin-top:6px}
+
+/* TWO COL */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g2);margin:28px 0}
+.cc{background:var(--bk2);padding:18px}
+.ccl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
+.cct{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+.ccb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+/* NUMBERED LIST */
+.nl{margin:18px 0 26px}
+.ni{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--g3);align-items:flex-start}
+.ni:last-child{border-bottom:none}
+.nn{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--y);font-weight:300;flex-shrink:0;width:22px;line-height:1.2}
+.nt{font-size:13px;font-weight:500;color:var(--w);margin-bottom:4px}
+.nb{font-size:13px;color:var(--g4);line-height:1.6;font-weight:300}
+
+/* RESULTS */
+.rg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--g2);margin:22px 0}
+.rc{background:var(--bk2);padding:22px}
+.rn{font-family:var(--serif);font-size:50px;font-weight:300;color:var(--y);line-height:1;margin-bottom:5px;letter-spacing:-1px}
+.rl{font-size:12px;color:var(--g1);line-height:1.4}
+.rd{font-size:12px;color:var(--g4);margin-top:5px;font-weight:300}
+
+/* INLINE IMG */
+.iimg{background:var(--bk3);border:1px solid var(--g2);height:140px;display:flex;align-items:center;justify-content:center;margin:24px 0;position:relative}
+.iiml{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2)}
+.iimc{position:absolute;bottom:9px;left:12px;font-size:11px;color:var(--g1)}
+
+/* LEARNING */
+.lrn{padding:18px 0;border-bottom:1px solid var(--g3)}
+.lrn:last-child{border-bottom:none}
+.lrt{font-size:14px;font-weight:500;color:var(--w);margin-bottom:5px}
+.lrb{font-size:13px;color:var(--g4);line-height:1.65;font-weight:300}
+
+/* SIDEBAR */
+.sb-sec{margin-bottom:28px}
+.sb-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--g2)}
+.sb-it{font-size:13px;color:var(--w);padding:7px 0;border-bottom:1px solid var(--g3);display:flex;align-items:center;gap:8px;font-weight:300}
+.sb-it::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--y);flex-shrink:0}
+.sb-tag{display:inline-block;font-size:10px;padding:3px 8px;background:var(--yd);color:var(--y);border:1px solid var(--yb);margin:3px 3px 3px 0;letter-spacing:.03em}
+.sb-sn{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--y);line-height:1;margin-bottom:2px}
+.sb-sl{font-size:11px;color:var(--g1)}
+.sb-st{padding:11px 0;border-bottom:1px solid var(--g3)}
+.sb-st:last-child{border-bottom:none}
+
+/* NEXT */
+.next{border-top:1px solid var(--g2);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--bk2)}
+.next:hover{background:var(--bk3)}
+.nxl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:7px}
+.nxt{font-family:var(--serif);font-size:26px;font-style:italic;font-weight:300;color:var(--w)}
+.nxa{font-size:26px;color:var(--y)}
+
+/* MOCKUP PLACEHOLDER */
+.mock{display:flex;gap:10px;align-items:center}
+.mp{width:48px;height:86px;border:1.5px solid var(--g2);border-radius:5px;background:var(--bk4);overflow:hidden}
+.mp-bar{height:14px;background:var(--bk3);border-bottom:1px solid var(--g2)}
+.mp-body{padding:5px;display:flex;flex-direction:column;gap:4px}
+.ml{height:4px;border-radius:2px;background:var(--g2)}
+.ml.y{background:var(--y);opacity:.5}
+.md{width:140px;height:90px;border:1.5px solid var(--g2);border-radius:4px;background:var(--bk4);overflow:hidden}
+.md-bar{height:13px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 5px;gap:3px}
+.mdd{width:4px;height:4px;border-radius:50%;background:var(--g2)}
+.md-body{padding:7px;display:flex;flex-direction:column;gap:4px}
+</style>
+
+<div class="portfolio">
+
+<div class="tabs">
+  <button class="tab on" onclick="show('gloria',this)">02 — Gloria AI</button>
+  <button class="tab" onclick="show('esencial',this)">03 — Esencial</button>
+  <button class="tab" onclick="show('kioscos',this)">04 — Kioscos</button>
+</div>
+
+<!-- ══ GLORIA ══ -->
+<div id="gloria" class="scr on">
+<div class="nav">
+  <div class="nav-logo">pzm</div>
+  <div class="nav-back">← Todos los casos</div>
+</div>
+<div class="pbar"><div class="pfill" style="width:28%"></div></div>
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Trabajo · <span>Ministerio de Economía · Chile</span> · 2020</div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">Diseñando a Gloria —<br>AI conversacional</div>
+      <div class="hero-sub">Cómo diseñé la personalidad de una IA, los flujos conversacionales y la arquitectura de una plataforma gubernamental que conectó miles de pymes con sus comunidades durante el COVID-19.</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Cliente</div><div class="meta-val">Ministerio de Economía</div></div>
+      <div class="meta-item"><div class="meta-key">Año</div><div class="meta-val">2020</div></div>
+      <div class="meta-item"><div class="meta-key">Rol</div><div class="meta-val">Consultora UX — Diseño Conversacional</div></div>
+      <div class="meta-item"><div class="meta-key">Escala</div><div class="meta-val">Nacional — todo Chile</div></div>
+    </div>
+  </div>
+</div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">+700</div><div class="stl">pymes registradas en 2 semanas</div></div>
+  <div class="stat"><div class="stn">Nacional</div><div class="stl">cobertura desde el lanzamiento</div></div>
+  <div class="stat"><div class="stn">24/7</div><div class="stl">Gloria disponible siempre</div></div>
+  <div class="stat"><div class="stn">5+</div><div class="stl">medios nacionales en cobertura</div></div>
+</div>
+<div class="himg">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div class="mock">
+      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml y" style="width:80%"></div><div class="ml" style="width:60%"></div><div class="ml y" style="width:70%"></div><div class="ml" style="width:50%"></div></div></div>
+      <div class="md"><div class="md-bar"><div class="mdd"></div><div class="mdd"></div><div class="mdd"></div></div><div class="md-body"><div class="ml y" style="height:5px;width:55%"></div><div class="ml" style="height:4px;width:80%"></div><div class="ml" style="height:4px;width:65%"></div></div></div>
+      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml" style="width:70%"></div><div class="ml y" style="width:80%"></div><div class="ml" style="width:55%"></div><div class="ml y" style="width:65%"></div></div></div>
+    </div>
+    <div class="himg-lbl">Plataforma Pymes de Barrio — placeholder para screenshots reales</div>
+  </div>
+  <div class="hbadge">AI UX · Conversacional · Gov</div>
+</div>
+<div class="body">
+<div class="main">
+  <div class="sh"><span class="shn">01</span> Contexto y problema</div>
+  <div class="bt">A principios de 2020, el Ministerio de Economía estaba piloteando un marketplace local: una plataforma para conectar a las personas con los negocios de su barrio en un radio de 3 km, a través de Gloria, la asistente virtual.</div>
+  <div class="bt">Cuando llegó la pandemia, el alcance cambió de la noche a la mañana. El piloto se convirtió en un programa nacional. El desafío ya no era solo facilitar el descubrimiento local — era la supervivencia económica de miles de pequeños negocios que no tenían presencia digital.</div>
+  <div class="twocol">
+    <div class="cc"><div class="ccl">El problema</div><div class="cct">Pymes sin canal digital</div><div class="ccb">Solo el 13% hacía e-commerce. Solo el 46% tenía sitio web. El confinamiento cerró el comercio físico de golpe.</div></div>
+    <div class="cc"><div class="ccl">La oportunidad</div><div class="cct">IA conversacional como puente</div><div class="ccb">Una asistente que encontrara y recomendara negocios cercanos, disponible 24/7, sin necesitar app.</div></div>
+  </div>
+  <div class="sh"><span class="shn">02</span> Definir la personalidad de Gloria</div>
+  <div class="bt">Lo primero que descarté fue definir la personalidad de Gloria yo sola. Facilité un taller de co-creación con stakeholders del Ministerio, dueños de pymes de Barrio Italia y coordinadores del programa. El objetivo era construir un personaje que pudiera representar genuinamente a miles de negocios distintos sin sonar genérico ni corporativo.</div>
+  <div class="bq">
+    <div class="bqt">"El taller mostró que ambos grupos querían que Gloria sonara como una vecina bien informada, no como un bot de atención al cliente."</div>
+  </div>
+  <div class="bt">De ese taller salieron cuatro pilares de comunicación:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Accesible y cálida</div><div class="nb">Lenguaje que funciona para todos los niveles de alfabetización digital — sin tecnicismos ni registro corporativo.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Arraigada en lo local</div><div class="nb">Siempre habla como alguien que conoce el barrio, no como un servicio centralizado.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Decisivamente útil</div><div class="nb">Nunca deja al usuario en un callejón sin salida — siempre ofrece un siguiente paso claro.</div></div></div>
+    <div class="ni"><div class="nn">4</div><div><div class="nt">Transparente con sus límites</div><div class="nb">Honesta cuando no tiene una respuesta, sin romper la confianza del usuario.</div></div></div>
+  </div>
+  <div class="iimg"><div class="iiml">Matriz de personalidad del taller</div><div class="iimc">Artefacto del taller de co-creación — placeholder</div></div>
+  <div class="sh"><span class="shn">03</span> Flujos conversacionales</div>
+  <div class="bt">Con la personalidad definida, mapeé todos los caminos posibles de conversación. El gran desafío del diseño conversacional es anticipar la variación de intención: la gente pregunta lo mismo de docenas de maneras distintas, y un chatbot que no lo reconoce genera frustración inmediata.</div>
+  <div class="bt">Organicé la arquitectura en torno a tres intenciones principales — búsqueda de producto, descubrimiento por ubicación, e información de contacto y logística — con rutas de fallback explícitas y estados de fallo sin cortes abruptos.</div>
+  <div class="iimg"><div class="iiml">Flujo conversacional principal de Gloria</div><div class="iimc">Diagrama de intenciones y rutas de fallback</div></div>
+  <div class="sh"><span class="shn">04</span> El giro por COVID-19</div>
+  <div class="bt">A mitad del proyecto, el alcance pasó de una comuna en Santiago a todo el país. Decisiones clave que tomé en respuesta:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Geolocalización opcional</div><div class="nb">Usuarios rurales necesitaban navegar por comuna o región, no solo por proximidad.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Onboarding mínimo para pymes</div><div class="nb">El formulario de registro se redujo al mínimo absoluto — completable desde el móvil, sin conocimientos técnicos.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Empty states explícitos</div><div class="nb">Mensajes de estado vacío para comunas sin pymes aún registradas, para no perder la confianza del usuario.</div></div></div>
+  </div>
+  <div class="sh"><span class="shn">05</span> Impacto</div>
+  <div class="rg">
+    <div class="rc"><div class="rn">+700</div><div class="rl">pymes en las primeras 2 semanas</div><div class="rd">Meta ministerial: 250.000</div></div>
+    <div class="rc"><div class="rn">5+</div><div class="rl">medios nacionales</div><div class="rd">Teletrece, radio, prensa escrita</div></div>
+    <div class="rc"><div class="rn">Todo Chile</div><div class="rl">cobertura geográfica</div><div class="rd">Desde Arica hasta Punta Arenas</div></div>
+    <div class="rc"><div class="rn">24/7</div><div class="rl">Gloria disponible</div><div class="rd">Sin dependencia de horario ni agentes</div></div>
+  </div>
+  <div class="bq"><div class="bqt">"La web es fácil de usar y tiene un mapa con todas las pymes del sector, más la ayuda de una asistente virtual disponible todos los días a toda hora."</div><div class="bqs">Prensa nacional chilena · cobertura del lanzamiento</div></div>
+  <div class="sh"><span class="shn">06</span> Aprendizajes</div>
+  <div class="lrn"><div class="lrt">La personalidad no es un entregable — es un output de investigación</div><div class="lrb">El error más común en diseño de IA conversacional es tratar la personalidad como un brief creativo. La identidad de Gloria surgió de lo que los propios stakeholders valoraban. Ese paso de co-creación es lo que la hizo sentir auténtica.</div></div>
+  <div class="lrn"><div class="lrt">Diseñar para el fallo importa más que diseñar para el éxito</div><div class="lrb">Los momentos en que la IA no entiende o no tiene respuesta son los que definen toda la experiencia. Dediqué tanto tiempo a los flujos de fallback como a las respuestas principales.</div></div>
+  <div class="lrn"><div class="lrt">Un producto con IA tiene dos grupos de usuarios</div><div class="lrb">Las pymes no eran solo usuarios finales — eran la fuente de datos que hacía útil a Gloria. Diseñar el onboarding de pymes con el mismo cuidado que la experiencia del comprador fue lo que permitió que el lado de la oferta escalara rápido.</div></div>
+</div>
+<div class="sidebar">
+  <div class="sb-sec"><div class="sb-lbl">Métricas clave</div><div class="sb-st"><div class="sb-sn">+700</div><div class="sb-sl">pymes en 2 semanas</div></div><div class="sb-st"><div class="sb-sn">Nacional</div><div class="sb-sl">cobertura Chile</div></div><div class="sb-st"><div class="sb-sn">5+</div><div class="sb-sl">medios nacionales</div></div></div>
+  <div class="sb-sec"><div class="sb-lbl">Herramientas</div><div class="sb-it">Figma</div><div class="sb-it">Miro</div><div class="sb-it">Frameworks conversacionales</div></div>
+  <div class="sb-sec"><div class="sb-lbl">Disciplinas</div><span class="sb-tag">AI UX</span><span class="sb-tag">Conversational Design</span><span class="sb-tag">Co-creación</span><span class="sb-tag">Information Architecture</span><span class="sb-tag">Content Strategy</span></div>
+</div>
+</div>
+<div class="next" onclick="show('esencial',document.querySelectorAll('.tab')[1])">
+  <div><div class="nxl">Siguiente caso</div><div class="nxt">Diseñando Esencial<br>desde cero</div></div>
+  <div class="nxa">→</div>
+</div>
+</div>
+
+<!-- ══ ESENCIAL ══ -->
+<div id="esencial" class="scr">
+<div class="nav"><div class="nav-logo">pzm</div><div class="nav-back">← Todos los casos</div></div>
+<div class="pbar"><div class="pfill" style="width:32%"></div></div>
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Trabajo · <span>Esencial Isapre · Chile</span> · 2021–2024</div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">Diseñando Esencial<br>desde cero</div>
+      <div class="hero-sub">Cómo el liderazgo de UX, la experimentación rápida y la reestructuración del equipo permitieron lanzar una aseguradora de salud 100% digital en 6 meses — y luego escalarla en una industria altamente regulada.</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Cliente</div><div class="meta-val">Esencial Isapre</div></div>
+      <div class="meta-item"><div class="meta-key">Años</div><div class="meta-val">2021 – 2024</div></div>
+      <div class="meta-item"><div class="meta-key">Rol</div><div class="meta-val">UX Lead</div></div>
+      <div class="meta-item"><div class="meta-key">Herramientas</div><div class="meta-val">Figma · Hotjar · Google Analytics</div></div>
+    </div>
+  </div>
+</div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">6 m.</div><div class="stl">tiempo hasta el lanzamiento</div></div>
+  <div class="stat"><div class="stn">3</div><div class="stl">productos digitales lanzados</div></div>
+  <div class="stat"><div class="stn">466+</div><div class="stl">páginas regulatorias internalizadas</div></div>
+  <div class="stat"><div class="stn">Primero</div><div class="stl">equipo interno de UX construido</div></div>
+</div>
+<div class="himg">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div class="mock">
+      <div class="md" style="width:200px;height:110px"><div class="md-bar"><div class="mdd"></div><div class="mdd"></div><div class="mdd"></div></div><div class="md-body" style="gap:5px"><div class="ml y" style="height:6px;width:60%"></div><div style="display:flex;gap:5px"><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div></div></div></div>
+      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml y" style="width:90%"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:80%"></div><div class="ml y" style="width:60%"></div><div class="ml" style="width:75%"></div></div></div>
+    </div>
+    <div class="himg-lbl">Flujo de simulación y portal del afiliado — placeholder</div>
+  </div>
+  <div class="hbadge">Product Design · Design System · A/B Testing</div>
+</div>
+<div class="body">
+<div class="main">
+  <div class="sh"><span class="shn">01</span> Contexto y desafío</div>
+  <div class="bt">Esencial era una isapre nueva que entraba al mercado chileno — un sector dominado por cinco actores establecidos, regido por <strong>más de 466 páginas de normas</strong> de la Superintendencia de Salud, y profundamente resistente a las experiencias digitales.</div>
+  <div class="bt">La hipótesis fundacional: una aseguradora 100% digital podía ganar por experiencia en un mercado donde la competencia seguía dependiendo de sucursales y teléfono. La restricción: lanzar en <strong>seis meses</strong> con un equipo pequeño y sin sistemas heredados.</div>
+  <div class="twocol">
+    <div class="cc"><div class="ccl">Lo que había que construir</div><div class="cct">3 productos desde cero</div><div class="ccb">Simulación de planes, contratación digital, portal del afiliado (reembolsos, certificados, pólizas) y back office para operaciones.</div></div>
+    <div class="cc"><div class="ccl">Con lo que contábamos</div><div class="cct">466 páginas como spec</div><div class="ccb">El compendio regulatorio de la Superintendencia como principal insumo. Sin usuarios para investigar — producto pre-lanzamiento.</div></div>
+  </div>
+  <div class="sh"><span class="shn">02</span> Fase 1 — Construir el MVP</div>
+  <div class="bt">Sin usuarios que investigar antes del lanzamiento, el insumo principal era el compendio regulatorio. Lo leí completo para identificar qué procesos eran obligatorios, cuáles eran discrecionales, y dónde había margen de simplificación sin crear riesgo de compliance.</div>
+  <div class="bq"><div class="bqt">"Esa lectura regulatoria profunda fue la investigación de diseño más importante del proyecto. Me permitió rechazar solicitudes de stakeholders con citas regulatorias específicas — no solo intuición."</div></div>
+  <div class="bt">Después de un <strong>benchmark completo de las 5 isapres competidoras</strong>, definí el flujo de simulación como la máxima prioridad: si un usuario no podía entender rápidamente qué plan le convenía, nada más en el producto importaba. El MVP quedó en 6 preguntas, completable en menos de 5 minutos.</div>
+  <div class="iimg"><div class="iiml">Wireframes del flujo de simulación — MVP</div><div class="iimc">Primera versión del flujo monitoreada con Hotjar post-lanzamiento</div></div>
+  <div class="sh"><span class="shn">03</span> Fase 2 — Experimentación y crecimiento</div>
+  <div class="bt">Los datos post-lanzamiento dejaban claro que la estructura que servía para construir no servía para aprender. Propuse y lideré una reestructuración en tres funciones:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Celda de mantenimiento</div><div class="nb">Scope acotado — correcciones, accesibilidad y entrega del roadmap sin saturar el equipo.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Squad de experimentación</div><div class="nb">Yo como UX Lead + Junior UI + Front Senior + Analista de Datos. Independencia total del roadmap — diseñar, construir, testear y lanzar en un sprint.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Mentoría rotatoria</div><div class="nb">Programa para formar a los diseñadores junior en métodos de investigación e interpretación de datos.</div></div></div>
+  </div>
+  <div class="iimg"><div class="iiml">Ejemplos de A/B tests — resultados page y tarjetas de plan</div><div class="iimc">Variantes de la página de resultados y rediseño de plan cards</div></div>
+  <div class="sh"><span class="shn">04</span> Sistema de diseño</div>
+  <div class="bt">A medida que el scope creció al portal del afiliado, el back office y múltiples touchpoints de comunicación, lideré la definición y documentación de la librería de componentes en Figma — convenciones de nomenclatura, estados de interacción, comportamiento responsivo y estándares de documentación.</div>
+  <div class="iimg"><div class="iiml">Component library en Figma — captura parcial</div><div class="iimc">Sistema de componentes con estados documentados para handoff a desarrollo</div></div>
+  <div class="sh"><span class="shn">05</span> Resultados</div>
+  <div class="rg">
+    <div class="rc"><div class="rn">6 m.</div><div class="rl">lanzamiento completo</div><div class="rd">De lienzo en blanco a producto en producción</div></div>
+    <div class="rc"><div class="rn">↑↑</div><div class="rl">Conversión de leads</div><div class="rd">Post-experimento de captura de email</div></div>
+    <div class="rc"><div class="rn">↑↑</div><div class="rl">Descarga de documentos</div><div class="rd">Tras rediseño de tarjetas de plan</div></div>
+    <div class="rc"><div class="rn">↓</div><div class="rl">Costo de adquisición</div><div class="rd">Vs. desarrollo tradicional (NDA — dirección validó)</div></div>
+  </div>
+  <div class="bq"><div class="bqt">"Con los resultados del squad hemos confirmado a la Gerencia que no necesitamos grandes recursos para hacer research — fallar rápido nos permite profundizar hallazgos con más frecuencia."</div><div class="bqs">Revisión interna de stakeholders</div></div>
+  <div class="sh"><span class="shn">06</span> Aprendizajes</div>
+  <div class="lrn"><div class="lrt">La estructura determina la velocidad</div><div class="lrb">La decisión de mayor impacto no fue de UI — fue de estructura de equipo. Crear un squad de experimentación con autonomía propia desbloqueó una velocidad de iteración que era imposible antes.</div></div>
+  <div class="lrn"><div class="lrt">La regulación como insumo, no como restricción</div><div class="lrb">466 páginas de normas podrían haber paralizado el proceso. En cambio, las traté como investigación primaria: una fuente de restricciones que, una vez entendidas, daban claridad sobre dónde había libertad para simplificar.</div></div>
+  <div class="lrn"><div class="lrt">Demostrar el valor del diseño en una organización analógica</div><div class="lrb">Cada decisión requería el argumento en términos de negocio, no de diseño. Traducir resultados de UX en costo de adquisición y tasa de conversión fue lo que le ganó al equipo un lugar en la mesa de estrategia.</div></div>
+</div>
+<div class="sidebar">
+  <div class="sb-sec"><div class="sb-lbl">Métricas clave</div><div class="sb-st"><div class="sb-sn">6 m.</div><div class="sb-sl">tiempo hasta el lanzamiento</div></div><div class="sb-st"><div class="sb-sn">3</div><div class="sb-sl">productos lanzados</div></div><div class="sb-st"><div class="sb-sn">466+</div><div class="sb-sl">páginas regulatorias</div></div></div>
+  <div class="sb-sec"><div class="sb-lbl">Herramientas</div><div class="sb-it">Figma</div><div class="sb-it">Hotjar</div><div class="sb-it">Google Analytics</div><div class="sb-it">A/B testing frameworks</div></div>
+  <div class="sb-sec"><div class="sb-lbl">Disciplinas</div><span class="sb-tag">Product Design</span><span class="sb-tag">Design Systems</span><span class="sb-tag">A/B Testing</span><span class="sb-tag">UX Leadership</span><span class="sb-tag">UX Strategy</span></div>
+</div>
+</div>
+<div class="next" onclick="show('kioscos',document.querySelectorAll('.tab')[2])">
+  <div><div class="nxl">Siguiente caso</div><div class="nxt">Diagnosticar fallas<br>en el autoservicio</div></div>
+  <div class="nxa">→</div>
+</div>
+</div>
+
+<!-- ══ KIOSCOS ══ -->
+<div id="kioscos" class="scr">
+<div class="nav"><div class="nav-logo">pzm</div><div class="nav-back">← Todos los casos</div></div>
+<div class="pbar"><div class="pfill" style="width:35%"></div></div>
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Trabajo · <span>Mastercard · Retail Chile</span> · 2020–2021</div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-title">Diagnosticar fallas<br>en el autoservicio</div>
+      <div class="hero-sub">Cómo combinar análisis experto, 222 comentarios de verbatim y testing guerrilla en contexto real identificó la causa raíz de un NPS bajo — y produjo un roadmap de rediseño para un operador bancario Mastercard en el retail chileno.</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Cliente</div><div class="meta-val">Operador bancario Mastercard (NDA)</div></div>
+      <div class="meta-item"><div class="meta-key">Años</div><div class="meta-val">2020 – 2021</div></div>
+      <div class="meta-item"><div class="meta-key">Rol</div><div class="meta-val">Consultora UX</div></div>
+      <div class="meta-item"><div class="meta-key">Contexto</div><div class="meta-val">Retail bancario · Chile</div></div>
+    </div>
+  </div>
+</div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">222</div><div class="stl">comentarios de verbatim analizados</div></div>
+  <div class="stat"><div class="stn">3</div><div class="stl">métodos de investigación combinados</div></div>
+  <div class="stat"><div class="stn">25%</div><div class="stl">cumplimiento accesibilidad (baseline)</div></div>
+  <div class="stat"><div class="stn">5</div><div class="stl">pain points con >20 repeticiones</div></div>
+</div>
+<div class="himg">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div style="display:flex;gap:16px;align-items:center">
+      <div style="width:80px;height:140px;border:1.5px solid var(--g2);border-radius:6px;background:var(--bk4);overflow:hidden">
+        <div style="height:20px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 8px"><div style="width:30px;height:4px;background:var(--g2);border-radius:2px"></div></div>
+        <div style="padding:8px;display:flex;flex-direction:column;gap:6px">
+          <div style="height:5px;background:var(--y);opacity:.4;border-radius:2px;width:90%"></div>
+          <div style="height:4px;background:var(--g2);border-radius:2px;width:70%"></div>
+          <div style="height:28px;background:var(--bk3);border:1px solid var(--g2);border-radius:3px;margin-top:4px"></div>
+          <div style="height:28px;background:var(--bk3);border:1px solid var(--g2);border-radius:3px"></div>
+        </div>
+      </div>
+      <div style="width:2px;height:60px;background:var(--g2)"></div>
+      <div style="width:80px;height:140px;border:1.5px solid var(--y);border-radius:6px;background:var(--bk3);overflow:hidden;opacity:.8">
+        <div style="height:20px;background:var(--bk2);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 8px"><div style="width:30px;height:4px;background:var(--y);opacity:.4;border-radius:2px"></div></div>
+        <div style="padding:8px;display:flex;flex-direction:column;gap:6px">
+          <div style="height:5px;background:var(--y);opacity:.6;border-radius:2px;width:90%"></div>
+          <div style="height:4px;background:var(--g4);opacity:.4;border-radius:2px;width:80%"></div>
+          <div style="height:28px;background:var(--bk2);border:1px solid var(--y);border-radius:3px;opacity:.5;margin-top:4px"></div>
+          <div style="height:28px;background:var(--bk2);border:1px solid var(--g2);border-radius:3px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="himg-lbl">Antes / después — kiosco de autoservicio</div>
+  </div>
+  <div class="hbadge">UX Research · WCAG · Mixed Methods</div>
+</div>
+<div class="body">
+<div class="main">
+  <div class="sh"><span class="shn">01</span> Brief y contexto</div>
+  <div class="bt">Un operador bancario Mastercard integrado en una de las cadenas de retail más grandes de Chile estaba realizando un rediseño de sus sucursales físicas. Dentro de ese proyecto, nos pidieron investigar un problema específico: los kioscos de autoservicio instalados en sucursales estaban generando un <strong>NPS inusualmente bajo</strong> — pero nadie sabía por qué.</div>
+  <div class="bt">El encargo era un diagnóstico, no un rediseño. Necesitaban entender qué estaba roto y cómo priorizarlo — con suficiente rigor para justificar inversión en desarrollo.</div>
+  <div class="sh"><span class="shn">02</span> Estrategia de investigación</div>
+  <div class="bt">Diseñé un enfoque de tres métodos que triangulara hallazgos desde ángulos distintos. La secuencia era intencional: el análisis experto dio el marco para interpretar los verbatims, y ambos juntos moldearon las hipótesis para el testing guerrilla.</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Análisis experto de usabilidad</div><div class="nb">Framework personalizado para 6 dimensiones de kiosco: ergonomía, accesibilidad, contenido y flujos, layout visual, control, y feedback y ayuda.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Análisis de verbatim NPS</div><div class="nb">222 comentarios de usuarios detractores, codificados en dos categorías: dolor (qué está roto) y mejora (qué creen que necesitan).</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Testing guerrilla en contexto</div><div class="nb">Test en los kioscos reales, en sucursales reales, con clientes reales — la usabilidad de un kiosco depende del contexto físico, no del laboratorio.</div></div></div>
+  </div>
+  <div class="sh"><span class="shn">03</span> Análisis experto</div>
+  <div class="bt">El cumplimiento global fue del <strong>44,7%</strong> — por debajo del umbral del 70% mínimo para una interfaz de autoservicio funcional. Las dos dimensiones más débiles:</div>
+  <div class="twocol">
+    <div class="cc"><div class="ccl">Control y feedback — 25%</div><div class="cct">El gap más crítico</div><div class="ccb">Los usuarios no tenían forma confiable de entender el estado de sus acciones, recuperarse de errores ni encontrar ayuda.</div></div>
+    <div class="cc"><div class="ccl">Accesibilidad — 36,4%</div><div class="cct">Por debajo del mínimo</div><div class="ccb">Ratios de contraste, tamaños de área táctil y legibilidad fallaban estándares básicos de WCAG.</div></div>
+  </div>
+  <div class="bq"><div class="bqt">"Las dimensiones mejor puntuadas — layout visual (57,7%) y ergonomía (54,2%) — seguían por debajo del umbral del 70%. El kiosco se veía aceptable pero no funcionaba."</div></div>
+  <div class="sh"><span class="shn">04</span> Análisis de verbatim: 222 voces</div>
+  <div class="bt">El cliente tenía datos de NPS acumulados pero nunca había analizado sistemáticamente los textos abiertos de los detractores. Codifiqué cada comentario distinguiendo entre quienes describían dolor puro y quienes proponían mejoras — dos tipos de información radicalmente distintos.</div>
+  <div class="iimg"><div class="iiml">Ejemplo de codificación de verbatim — imagen</div><div class="iimc">Comentario anonimizado con anotaciones de clasificación y mapeo a pain cluster</div></div>
+  <div class="bt">De los comentarios de dolor identifiqué <strong>5 problemas recurrentes con más de 20 repeticiones</strong> cada uno — un umbral para asegurar que estábamos atacando problemas sistémicos, no casos aislados.</div>
+  <div class="iimg"><div class="iiml">Gráfico resumen de los 5 pain clusters — imagen</div><div class="iimc">Los 5 problemas más frecuentes con >20 repeticiones y frecuencia relativa</div></div>
+  <div class="sh"><span class="shn">05</span> Testing guerrilla en contexto</div>
+  <div class="bt">Diseñé y ejecuté un test guerrilla en dos sucursales de la Región Metropolitana durante horas pico — contactando a más de 90 clientes y reclutando 10 participantes. Cada sesión duró en promedio 10 minutos, con la más larga en 17 minutos (usuario sin experiencia) y la más corta en 5 (usuario frecuente). <strong>Esa variación ya era un hallazgo.</strong></div>
+  <div class="iimg"><div class="iiml">Fotos de participantes en el test guerrilla — imagen</div><div class="iimc">Testing en contexto real en sucursales de Santiago</div></div>
+  <div class="sh"><span class="shn">06</span> Diagnóstico y recomendaciones</div>
+  <div class="bt">El hallazgo principal: los problemas de NPS no eran incidentes aislados. Eran expresiones distintas del mismo problema unificado — <strong>un kiosco que dejaba a los usuarios en incertidumbre en cada momento crítico.</strong></div>
+  <div class="bt">Cada pain point se trazaba hasta una de tres causas raíz:</div>
+  <div class="nl">
+    <div class="ni"><div class="nn">1</div><div><div class="nt">Etiquetado ambiguo</div><div class="nb">Los nombres de servicios y tipos de documento no coincidían con los modelos mentales de los usuarios. Solución: card sorting desde el verbatim.</div></div></div>
+    <div class="ni"><div class="nn">2</div><div><div class="nt">Feedback ausente o genérico</div><div class="nb">Las pantallas de confirmación no decían qué había ocurrido realmente. Solución: reescribir todas las pantallas de estado con 3 preguntas: qué pasó, qué significa, qué hacer.</div></div></div>
+    <div class="ni"><div class="nn">3</div><div><div class="nt">Sin rutas de recuperación</div><div class="nb">Los errores dejaban a los usuarios varados. Solución: preview antes de imprimir, mensajes de error específicos, botón de ayuda visible.</div></div></div>
+  </div>
+  <div class="iimg"><div class="iiml">Wireframe antes / después de la home del kiosco — imagen</div><div class="iimc">Pantalla original vs rediseño propuesto con anotaciones de cambios</div></div>
+  <div class="rg">
+    <div class="rc"><div class="rn">44.7%</div><div class="rl">cumplimiento global baseline</div><div class="rd">Meta a alcanzar: 70%</div></div>
+    <div class="rc"><div class="rn">5</div><div class="rl">pain clusters identificados</div><div class="rd">>20 repeticiones cada uno</div></div>
+    <div class="rc"><div class="rn">222</div><div class="rl">comentarios analizados</div><div class="rd">Julio–Octubre 2020</div></div>
+    <div class="rc"><div class="rn">3</div><div class="rl">causas raíz sistémicas</div><div class="rd">Etiquetado · Feedback · Recuperación</div></div>
+  </div>
+  <div class="sh"><span class="shn">07</span> Aprendizajes</div>
+  <div class="lrn"><div class="lrt">La triangulación de métodos produce mejores diagnósticos</div><div class="lrb">Si hubiera hecho solo el análisis experto, habría encontrado los problemas de interfaz pero me habría perdido el contexto emocional. El testing guerrilla solo podría haber reparado síntomas sin abordar la causa raíz sistémica. La combinación fue lo que hizo el diagnóstico creíble y accionable.</div></div>
+  <div class="lrn"><div class="lrt">El lenguaje de los usuarios es el camino más directo a los problemas de IA</div><div class="lrb">Leer 222 verbatims fue una de las inversiones de investigación más eficientes del proyecto. Las respuestas de texto abierto contenían exactamente las palabras que los usuarios esperaban ver en la interfaz.</div></div>
+  <div class="lrn"><div class="lrt">El problema de un usuario probablemente es el de muchos</div><div class="lrb">El cliente asumía que el NPS bajo era por fallas técnicas puntuales. La investigación mostró lo contrario: cada pain point era una falla sistémica que afectaba a una proporción significativa de usuarios — de formas predecibles y reparables.</div></div>
+</div>
+<div class="sidebar">
+  <div class="sb-sec"><div class="sb-lbl">Métricas clave</div><div class="sb-st"><div class="sb-sn">222</div><div class="sb-sl">verbatims analizados</div></div><div class="sb-st"><div class="sb-sn">44.7%</div><div class="sb-sl">cumplimiento baseline</div></div><div class="sb-st"><div class="sb-sn">5</div><div class="sb-sl">pain clusters</div></div></div>
+  <div class="sb-sec"><div class="sb-lbl">Herramientas</div><div class="sb-it">Figma</div><div class="sb-it">Framework heurístico</div><div class="sb-it">Protocolo testing en contexto</div></div>
+  <div class="sb-sec"><div class="sb-lbl">Disciplinas</div><span class="sb-tag">UX Research</span><span class="sb-tag">Usability Testing</span><span class="sb-tag">WCAG</span><span class="sb-tag">Mixed Methods</span><span class="sb-tag">Information Architecture</span></div>
+</div>
+</div>
+<div class="next">
+  <div><div class="nxl">Has visto todos los casos</div><div class="nxt">Volver a la homepage</div></div>
+  <div class="nxa">↑</div>
+</div>
+</div>
+
+</div>
+<script>
+function show(id,tab){
+  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  if(tab && tab.classList) tab.classList.add('on');
+}
+</script>
