@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Pamela Zárate Martel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bk:#0C0C0C;--bk2:#141414;--bk3:#1C1C1C;--bk4:#242424;
+      --y:#FFFC86;--yd:rgba(255,252,134,0.10);--yb:rgba(255,252,134,0.25);
+      --w:#F5F4EF;--g1:#888880;--g2:#3A3A3A;--g3:#242424;--g4:#B8B8B0;
+      --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+    }
+    body{background:var(--bk);color:var(--w);font-family:var(--sans);font-weight:300}
+
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--g2);background:rgba(12,12,12,.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10}
+    .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w);text-decoration:none}
+    .nav-links{display:flex;gap:32px}
+    .nav-link{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g1);text-decoration:none;transition:color .2s}
+    .nav-link:hover,.nav-link.active{color:var(--y)}
+
+    .hero{padding:80px 40px;text-align:center;min-height:50vh;display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:1px solid var(--g2)}
+    .hero-title{font-family:var(--serif);font-size:56px;font-style:italic;font-weight:300;line-height:1.1;letter-spacing:-2px;color:var(--w);margin-bottom:24px;max-width:600px}
+    .hero-sub{font-size:16px;color:var(--g4);line-height:1.7;max-width:700px;margin:0 auto}
+
+    .content{display:grid;grid-template-columns:1fr 248px;gap:48px;padding:60px 40px;max-width:1200px}
+    .main{font-size:15px;line-height:1.8;color:var(--g4)}
+    .main h3{font-family:var(--serif);font-size:28px;font-style:italic;font-weight:300;color:var(--w);margin:48px 0 24px;letter-spacing:-1px}
+    .main h3:first-child{margin-top:0}
+    .main p{margin-bottom:20px}
+    .main strong{color:var(--w);font-weight:500}
+
+    .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g2);margin:24px 0}
+    .skill-card{background:var(--bk2);padding:20px}
+    .skill-cat{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:10px}
+    .skill-list{font-size:13px;color:var(--g4);line-height:1.6}
+    .skill-list li{margin-bottom:6px}
+
+    .sidebar{border-left:1px solid var(--g2);padding-left:24px}
+    .sb-section{margin-bottom:32px}
+    .sb-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--g2)}
+    .sb-item{margin-bottom:18px;font-size:13px;line-height:1.6}
+    .sb-item-label{font-size:11px;color:var(--g1);margin-bottom:4px}
+    .sb-item-val{color:var(--w);font-weight:500}
+
+    .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--y);color:var(--bk);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .2s;margin-top:16px}
+    .cta-btn:hover{background:var(--w)}
+    .cta-btn svg{width:14px;height:14px}
+
+    .back-link{display:inline-block;margin-bottom:40px}
+    .back-link a{font-size:11px;color:var(--g1);letter-spacing:.06em;text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:6px}
+    .back-link a:hover{color:var(--w)}
+
+    footer{padding:40px;border-top:1px solid var(--g2);text-align:center;font-size:12px;color:var(--g1)}
+    footer a{color:var(--y);text-decoration:none}
+    footer a:hover{color:var(--w)}
+
+    @media (max-width:768px){
+      .hero{padding:60px 20px}
+      .hero-title{font-size:40px}
+      .content{grid-template-columns:1fr;gap:0}
+      .sidebar{border-left:none;padding-left:0;margin-top:40px;padding-top:40px;border-top:1px solid var(--g2)}
+      .skills-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="index_en.html" class="nav-logo" style="text-decoration:none">pzm</a>
+  <div class="nav-links">
+    <a href="index_en.html" class="nav-link">Work</a>
+    <a href="about_en.html" class="nav-link active">About</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1 class="hero-title">About me</h1>
+  <p class="hero-sub">I research, design, and mentor teams to solve complex problems through rigorous investigation and human-centered thinking.</p>
+</div>
+
+<div class="content">
+  <div class="main">
+    <h3>Approach</h3>
+    <p>I believe great design starts with <strong>deep understanding</strong>. For every project, I invest time in field research, user interviews, and behavioral observation — not just analytics dashboards. This foundation of insight guides everything that follows: strategy, design decisions, and measurement.</p>
+    <p>Over <strong>9 years</strong>, I've helped startups launch regulated products, guided government platforms serving thousands of users, and advised teams on how to measure and improve experiences across physical and digital touchpoints. I specialize in <strong>digital transformation</strong>, <strong>accessibility (WCAG 2.2 AA)</strong>, and <strong>evidence-based design</strong>.</p>
+
+    <h3>Core practices</h3>
+    <p><strong>Qualitative & quantitative research.</strong> In-context interviews, ethnographic observation, co-creation workshops, A/B testing, and heuristic evaluation. Field work at airports, retail locations, and government offices has informed my best insights.</p>
+    <p><strong>Conversational & AI-powered design.</strong> I've designed chatbot personalities, conversational flows, and AI interfaces. I understand that tone, language, and context matter as much as the visual interface.</p>
+    <p><strong>Service design & omnichannel thinking.</strong> Products don't live in silos. I map and optimize experiences across digital, email, phone, and physical touchpoints.</p>
+    <p><strong>Design systems & team leadership.</strong> I've built Figma component libraries, established experimentation squads, and mentored in-house UX teams. I translate research insights into business metrics for stakeholders.</p>
+
+    <h3>Skills & expertise</h3>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Research & Strategy</div>
+        <ul class="skill-list">
+          <li>Qualitative & quantitative research</li>
+          <li>A/B testing & experimentation</li>
+          <li>Service design & journey mapping</li>
+          <li>UX strategy & roadmaps</li>
+          <li>Digital transformation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Design & Systems</div>
+        <ul class="skill-list">
+          <li>End-to-end product design</li>
+          <li>Information architecture</li>
+          <li>Conversational & AI UX</li>
+          <li>Design systems & components</li>
+          <li>WCAG 2.2 AA compliance</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Tools & Methods</div>
+        <ul class="skill-list">
+          <li>Figma, Hotjar, Useberry, Maze</li>
+          <li>Google Analytics, CrazyEgg</li>
+          <li>Usability testing & prototyping</li>
+          <li>Agile (scrum, lean, kanban)</li>
+          <li>Workshop facilitation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Domains</div>
+        <ul class="skill-list">
+          <li>Healthcare & insurance</li>
+          <li>Banking & fintech</li>
+          <li>Government & public sector</li>
+          <li>Airlines & retail</li>
+          <li>AI & chatbots</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Recent work</h3>
+    <p><strong>At Esencial Isapre (2021–2024)</strong>, I led the UX strategy for a digital health insurance product launched from scratch. I built the first in-house UX team, established an A/B testing program that improved conversion rates and reduced acquisition costs, and designed the component library that accelerated roadmap iteration.</p>
+    
+    <p><strong>At LATAM Airlines (2017–2019)</strong>, I redesigned the digital Travel Voucher redemption service, increasing digital redemptions by 165% and reducing Contact Center calls by 18.5%. I managed content strategy and information architecture across multiple teams.</p>
+    
+    <p><strong>At the Ministry of Economy (2020)</strong>, I designed the conversational personality and UX flows for Gloria, a government chatbot integrated into a national SME marketplace launched during COVID-19. The platform was covered by national media outlets.</p>
+
+    <p style="margin-top:32px;font-style:italic;color:var(--g1)">For detailed work history, roles at ERA, the Ministry of Transport, and more, download my CV or visit my LinkedIn.</p>
+  </div>
+
+  <div class="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">Quick facts</div>
+      <div class="sb-item">
+        <div class="sb-item-label">Based in</div>
+        <div class="sb-item-val">Gijón, Asturias</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">Experience</div>
+        <div class="sb-item-val">9+ years in UX</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">Current roles</div>
+        <div class="sb-item-val">UX Consultant & Senior UX Designer</div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Education</div>
+      <div class="sb-item">
+        <div class="sb-item-label">Degree</div>
+        <div class="sb-item-val">Licenciada en Comunicación Social (2014)</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">Marketing</div>
+        <div class="sb-item-val">Título en Marketing y Publicidad (2014)</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">Design Thinking</div>
+        <div class="sb-item-val">Hello Design Thinking, IDEO U (2020)</div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">Accessibility</div>
+        <div class="sb-item-val">WCAG 2.2 AA Certification (2025)</div>
+      </div>
+    </div>
+      <a href="CV_Pamela Zárate Martel_ENG_2026.pdf" download class="cta-btn">
+        <span>Download CV</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </a>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-label">Get in touch</div>
+      <div class="sb-item">
+        <div class="sb-item-label">Email</div>
+        <div class="sb-item-val"><a href="mailto:p.zaratemartel@gmail.com" style="color:var(--y);text-decoration:none">p.zaratemartel@gmail.com</a></div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">LinkedIn</div>
+        <div class="sb-item-val"><a href="https://www.linkedin.com/in/pamzaratemartel/" target="_blank" style="color:var(--y);text-decoration:none">View profile</a></div>
+      </div>
+      <div class="sb-item">
+        <div class="sb-item-label">Portfolio</div>
+        <div class="sb-item-val"><a href="https://zaratemartel.work" target="_blank" style="color:var(--y);text-decoration:none">zaratemartel.work</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024 Pamela Zárate Martel · <a href="https://www.linkedin.com/in/pamelazaratemartel/" target="_blank">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
