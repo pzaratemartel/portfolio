@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LATAM Airlines — Case Study | Pamela Zarate</title>
+  <title>LATAM Airlines — Case Study | Pamela Zárate Martel</title>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
 
@@ -44,14 +44,15 @@
 .nav-logo { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--white); }
 .nav-back { font-size: 11px; color: var(--g1); letter-spacing: .06em; cursor: pointer; display: flex; align-items: center; gap: 6px; }
 .nav-back:hover { color: var(--white); }
-.nav-links { display: flex; gap: 24px; }
-.nav-link { font-size: 11px; color: var(--g1); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
-.nav-link:hover { color: var(--white); }
+
+/* ── PROGRESS BAR ── */
+.pbar { height: 2px; background: var(--g2); width: 100%; }
+.pfill { height: 100%; background: var(--yellow); width: 0%; transition: width 0.1s ease; }
 
 /* ── HERO ── */
 .hero { padding: 56px 40px 0; }
 
-.hero-eyebrow {
+.eyebrow {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -59,67 +60,51 @@
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--g1);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
-.hero-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--yellow); }
-.hero-eyebrow span { color: var(--white); }
+.eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
+.eyebrow span { color: var(--white); }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: 1fr 248px;
   gap: 48px;
   align-items: end;
   margin-bottom: 40px;
 }
 .hero-title {
   font-family: var(--serif);
-  font-size: 72px;
+  font-size: 68px;
   font-style: italic;
   font-weight: 300;
   line-height: .95;
   letter-spacing: -2px;
   color: var(--white);
 }
-.hero-subtitle {
+.hero-sub {
   font-size: 14px;
   color: var(--g4);
   line-height: 1.7;
-  margin-top: 20px;
-  max-width: 520px;
+  margin-top: 18px;
+  max-width: 500px;
   font-weight: 300;
 }
-.hero-meta { display: flex; flex-direction: column; gap: 0; }
-.hero-meta-item {
-  padding: 14px 0;
+
+.meta-block {}
+.meta-item {
+  padding: 13px 0;
   border-bottom: 1px solid var(--g2);
 }
-.hero-meta-item:first-child { border-top: 1px solid var(--g2); }
-.hero-meta-key { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g1); margin-bottom: 3px; }
-.hero-meta-val { font-size: 13px; color: var(--white); font-weight: 400; }
+.meta-item:first-child { border-top: 1px solid var(--g2); }
+.meta-key { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--g1); margin-bottom: 2px; }
+.meta-val { font-size: 13px; color: var(--white); font-weight: 400; }
 
 /* ── STATS BAR ── */
-.stats-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--g2);
-  border-bottom: 1px solid var(--g2);
-  margin-top: 0;
-}
-.stat {
-  padding: 22px 28px;
-  border-right: 1px solid var(--g2);
-}
-.stat:last-child { border-right: none; }
-.stat-num {
-  font-family: var(--serif);
-  font-size: 44px;
-  font-weight: 300;
-  color: var(--yellow);
-  line-height: 1;
-  margin-bottom: 5px;
-  letter-spacing: -1px;
-}
-.stat-label { font-size: 11px; color: var(--g1); line-height: 1.4; }
+.statsbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--g2);border-bottom:1px solid var(--g2)}
+.stat{padding:20px 24px;border-right:1px solid var(--g2)}
+.stat:last-child{border-right:none}
+.stn{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--yellow);line-height:1;margin-bottom:4px;letter-spacing:-1px}
+.stl{font-size:11px;color:var(--g1);line-height:1.4}
 
 /* ── HERO IMAGE ── */
 .hero-img {
@@ -332,51 +317,29 @@
 <div class="nav">
   <div class="nav-logo">pzm</div>
   <a href="../index_en.html" class="nav-back" style="text-decoration:none;color:inherit">← All cases</a>
-  <div class="nav-links">
-    <span class="nav-link">Work</span>
-    <span class="nav-link">Process</span>
-    <span class="nav-link">Contact</span>
-  </div>
 </div>
-
-<div class="progress-bar"><div class="progress-fill"></div></div>
-
+<div class="pbar"><div class="pfill"></div></div>
 <div class="hero">
-  <div class="hero-eyebrow">
-    <div class="hero-eyebrow-dot"></div>
-    Work · <span>LATAM Airlines</span> · 2017–2019
-  </div>
+  <div class="eyebrow"><div class="eyebrow-dot"></div>Work · <span>LATAM Airlines</span> · 2017–2019</div>
   <div class="hero-grid">
     <div>
       <div class="hero-title">From frustration<br>to resolution</div>
-      <div class="hero-subtitle">How omnichannel product thinking — spanning physical documents, digital flows, email and Contact Center — increased digital redemption by 165% and raised user satisfaction from 2.1 to 4.6.</div>
+      <div class="hero-sub">How omnichannel product thinking — spanning physical documents, digital flows, email and Contact Center — increased digital redemption by 165% and raised user satisfaction from 2.1 to 4.6.</div>
     </div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-key">Client</div>
-        <div class="hero-meta-val">LATAM Airlines</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-key">Year</div>
-        <div class="hero-meta-val">2017 – 2019</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-key">Role</div>
-        <div class="hero-meta-val">UX Content Strategist & Mentor</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-key">Presented at</div>
-        <div class="hero-meta-val">Interaction Latin America 2019, Colombia</div>
-      </div>
+    <div class="meta-block">
+      <div class="meta-item"><div class="meta-key">Client</div><div class="meta-val">LATAM Airlines</div></div>
+      <div class="meta-item"><div class="meta-key">Year</div><div class="meta-val">2017 – 2019</div></div>
+      <div class="meta-item"><div class="meta-key">Role</div><div class="meta-val">UX Content Strategist & Mentor</div></div>
+      <div class="meta-item"><div class="meta-key">Tools</div><div class="meta-val">Figma, Hotjar, Google Analytics, In-context testing</div></div>
     </div>
   </div>
 </div>
 
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num">+165%</div><div class="stat-label">digital redemption increase</div></div>
-  <div class="stat"><div class="stat-num">−18.5%</div><div class="stat-label">Contact Center calls</div></div>
-  <div class="stat"><div class="stat-num">2.1→4.6</div><div class="stat-label">satisfaction score</div></div>
-  <div class="stat"><div class="stat-num">5:40</div><div class="stat-label">avg time vs 30 min by phone</div></div>
+<div class="statsbar">
+  <div class="stat"><div class="stn">+165%</div><div class="stl">digital redemption increase</div></div>
+  <div class="stat"><div class="stn">−18.5%</div><div class="stl">Contact Center calls</div></div>
+  <div class="stat"><div class="stn">2.1→4.6</div><div class="stl">satisfaction score</div></div>
+  <div class="stat"><div class="stn">5:40</div><div class="stl">avg time vs 30 min by phone</div></div>
 </div>
 
 <div class="hero-img">
@@ -587,6 +550,15 @@
 </a>
 
 </div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = window.scrollY;
+  const progress = scrollHeight > 0 ? (scrolled / scrollHeight) * 100 : 0;
+  document.querySelector('.pfill').style.width = progress + '%';
+});
+</script>
 
 </body>
 </html>

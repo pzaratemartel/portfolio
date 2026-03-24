@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gloria AI — Case Study | Pamela Zarate</title>
+  <title>Gloria AI — Case Study | Pamela Zárate Martel</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}
@@ -19,7 +19,7 @@
     .nav-logo{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--w)}
     .nav-back{font-size:11px;color:var(--g1);letter-spacing:.06em;cursor:pointer}
     .nav-back:hover{color:var(--w)}
-    .pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:30%}
+    .pbar{height:2px;background:var(--g2)}.pfill{height:100%;background:var(--y);width:0%;transition:width 0.1s ease}
 
     .hero{padding:52px 40px 0}
     .eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g1);margin-bottom:24px}
@@ -123,7 +123,7 @@
   <div class="nav-logo">pzm</div>
   <a href="../index_en.html" class="nav-back" style="text-decoration:none;color:inherit">← All cases</a>
 </div>
-<div class="pbar"><div class="pfill" style="width:28%"></div></div>
+<div class="pbar"><div class="pfill"></div></div>
 <div class="hero">
   <div class="eyebrow"><div class="eyebrow-dot"></div>Work · <span>Ministry of Economy · Chile</span> · 2020</div>
   <div class="hero-grid">
@@ -224,6 +224,15 @@
   <div class="next-arrow">→</div>
 </div>
 </a>
+
+<script>
+window.addEventListener('scroll', () => {
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = window.scrollY;
+  const progress = scrollHeight > 0 ? (scrolled / scrollHeight) * 100 : 0;
+  document.querySelector('.pfill').style.width = progress + '%';
+});
+</script>
 
 </body>
 </html>
