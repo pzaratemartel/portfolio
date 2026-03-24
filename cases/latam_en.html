@@ -311,6 +311,10 @@
 /* progress bar scroll simulation */
 .progress-bar { height: 2px; background: var(--g2); position: sticky; top: 56px; z-index: 9; }
 .progress-fill { height: 100%; background: var(--yellow); width: 35%; transition: width .1s; }
+
+/* case study images */
+.cs-img { width: 100%; display: block; border: 1px solid var(--g2); margin: 28px 0; }
+.cs-img-group { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
   </style>
 </head>
 <body>
@@ -348,51 +352,7 @@
   <div class="stat"><div class="stn">5:40</div><div class="stl">avg time vs 30 min by phone</div></div>
 </div>
 
-<div class="hero-img">
-  <div class="hero-img-inner">
-    <div class="hero-img-mockup">
-      <div class="mockup-phone">
-        <div class="mockup-phone-bar"></div>
-        <div class="mockup-phone-screen">
-          <div class="mockup-line y med"></div>
-          <div class="mockup-line short"></div>
-          <div class="mockup-line med"></div>
-          <div class="mockup-line y short"></div>
-          <div class="mockup-line med"></div>
-        </div>
-      </div>
-      <div class="mockup-desktop">
-        <div class="mockup-desktop-bar">
-          <div class="mockup-desktop-dot"></div>
-          <div class="mockup-desktop-dot"></div>
-          <div class="mockup-desktop-dot"></div>
-        </div>
-        <div class="mockup-desktop-screen">
-          <div class="mockup-line y" style="height:6px;border-radius:2px;background:var(--yellow);opacity:.5;width:60%"></div>
-          <div class="mockup-line" style="height:4px;border-radius:2px;background:var(--g2);width:80%"></div>
-          <div class="mockup-line" style="height:4px;border-radius:2px;background:var(--g2);width:90%"></div>
-          <div style="height:8px"></div>
-          <div style="display:flex;gap:6px">
-            <div style="flex:1;height:28px;background:var(--black3);border:1px solid var(--g2);border-radius:2px"></div>
-            <div style="flex:1;height:28px;background:var(--black3);border:1px solid var(--g2);border-radius:2px"></div>
-          </div>
-        </div>
-      </div>
-      <div class="mockup-phone">
-        <div class="mockup-phone-bar"></div>
-        <div class="mockup-phone-screen">
-          <div class="mockup-line med"></div>
-          <div class="mockup-line y short"></div>
-          <div class="mockup-line med"></div>
-          <div class="mockup-line short"></div>
-          <div class="mockup-line y med"></div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-img-label">Responsive design — placeholder for real screenshots</div>
-  </div>
-  <div class="hero-img-badge">Service Design · Omnichannel</div>
-</div>
+<img src="../files/latam/LATAM-1.png" alt="LATAM Travel Voucher — overview" style="width:100%;display:block;border-bottom:1px solid var(--g2);">
 
 <div class="body-grid">
 <div class="main">
@@ -422,10 +382,7 @@
 
   <div class="body-text">I conducted <strong>12 in-depth interviews</strong> with passengers who had received a Travel Voucher between March and September 2018. The journey map revealed 5 distinct failure points, each corresponding to a different touchpoint in the ecosystem. None was purely a digital problem.</div>
 
-  <div class="inline-img">
-    <div class="inline-img-label">Complete journey map — image</div>
-    <div class="inline-img-caption">Full experience journey map — from airport contingency to bank transfer</div>
-  </div>
+  <img src="../files/latam/LATAM-2.png" alt="Complete journey map — from airport contingency to bank transfer" class="cs-img">
 
   <div class="body-text">In parallel, a <strong>benchmark of 10 services</strong> across different industries — airlines, banks, insurers, Netflix, Airbnb, Spotify, Uber — revealed what successful refund flows had in common: they verified identity early, set clear expectations about timing, and sent proactive updates.</div>
 
@@ -462,9 +419,9 @@
     </div>
   </div>
 
-  <div class="inline-img">
-    <div class="inline-img-label">Digital flow wireframes — image</div>
-    <div class="inline-img-caption">Lo-fi wireframes and final digital redemption flow design</div>
+  <div class="cs-img-group">
+    <img src="../files/latam/LATAM-3.png" alt="Digital redemption flow — wireframes" class="cs-img" style="margin:0">
+    <img src="../files/latam/LATAM-4.webp" alt="Digital redemption flow — final design" class="cs-img" style="margin:0">
   </div>
 
   <div class="sec-head"><span class="sec-num">04</span> Results</div>
