@@ -111,6 +111,8 @@
     .md-bar{height:13px;background:var(--bk3);border-bottom:1px solid var(--g2);display:flex;align-items:center;padding:0 5px;gap:3px}
     .mdd{width:4px;height:4px;border-radius:50%;background:var(--g2)}
     .md-body{padding:7px;display:flex;flex-direction:column;gap:4px}
+    .cs-img{width:100%;display:block;border:1px solid var(--g2);margin:24px 0}
+    .cs-img-group{display:flex;flex-direction:column;gap:16px;margin:24px 0}
     .next-case{border-top:1px solid var(--g2);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:var(--bk2)}
     .next-case:hover{background:var(--bk3)}
     .next-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--g1);margin-bottom:8px}
@@ -151,16 +153,7 @@
   <div class="stat"><div class="stn">466+</div><div class="stl">regulatory pages internalized</div></div>
   <div class="stat"><div class="stn">First</div><div class="stl">internal UX team built</div></div>
 </div>
-<div class="himg">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-    <div class="mock">
-      <div class="md" style="width:200px;height:110px"><div class="md-bar"><div class="mdd"></div><div class="mdd"></div><div class="mdd"></div></div><div class="md-body" style="gap:5px"><div class="ml y" style="height:6px;width:60%"></div><div style="display:flex;gap:5px"><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div><div style="flex:1;height:32px;background:var(--bk3);border:1px solid var(--g2);border-radius:2px"></div></div></div></div>
-      <div class="mp"><div class="mp-bar"></div><div class="mp-body"><div class="ml y" style="width:90%"></div><div class="ml" style="width:70%"></div><div class="ml" style="width:80%"></div><div class="ml y" style="width:60%"></div><div class="ml" style="width:75%"></div></div></div>
-    </div>
-    <div class="himg-lbl">Plan simulation and member portal flow — placeholder</div>
-  </div>
-  <div class="hbadge">Product Design · Design System · A/B Testing</div>
-</div>
+<img src="../files/esencial/Esencial-1.png" alt="Esencial — plan simulation and member portal" style="width:100%;display:block;border-bottom:1px solid var(--g2);">
 <div class="body">
 <div class="main">
   <div class="sh"><span class="shn">01</span> Context and challenge</div>
@@ -176,8 +169,11 @@
   <div class="sh"><span class="shn">03</span> Phase 1 — Building the MVP</div>
   <div class="bt">With no users to research before launch, the main input was the regulatory compendium. I read it completely to identify which processes were mandatory, which were discretionary, and where there was room for simplification without compliance risk.</div>
   <div class="bq"><div class="bqt">"That deep regulatory reading was the most important design research of the project. It let me reject stakeholder requests with specific regulatory citations — not just intuition."</div></div>
-  <div class="bt">After a <strong>complete benchmark of all 5 competing insurers</strong>, I prioritized the plan simulation flow: if a user couldn't quickly understand which plan suited them, nothing else in the product mattered. The MVP came down to 6 questions, completable in under 5 minutes.</div>
-  <div class="iimg"><div class="iiml">Simulation flow wireframes — MVP</div><div class="iimc">First version of the flow, monitored with Hotjar post-launch</div></div>
+  <img src="../files/esencial/Esencial-5.png" alt="Esencial — regulatory analysis and UX decisions" class="cs-img">
+  <div class="bt">I conducted a <strong>full benchmark of all five competing isapres</strong>, mapping their sales flows step by step and scoring them against six UX dimensions. This produced a clear picture of where every competitor was weak — and therefore where Esencial could differentiate on experience, not just price.</div>
+  <img src="../files/esencial/Esencial-6.png" alt="Esencial — competitive benchmark" class="cs-img">
+  <div class="bt">The MVP simulation flow reduced the required inputs to <strong>6 questions</strong>, producing a results view and a plan detail page that could be completed in under 5 minutes — compared to an industry average that required an agent call.</div>
+  <img src="../files/esencial/Esencial-7.png" alt="Esencial — MVP simulation flow" class="cs-img">
   <div class="bt">We launched without user testing — a deliberate decision given the confidentiality constraints of a pre-announced financial product. Instead, we monitored post-launch behaviour with Hotjar and Google Analytics from day one.</div>
   <div class="bt">The first week of real data told us something our internal testing hadn't: users were simulating plans but not converting. And because we hadn't captured any contact information, we had no way to follow up.</div>
   <div class="sh"><span class="shn">04</span> Phase 2 — Experimentation and growth</div>
@@ -194,10 +190,18 @@
     <div class="ni"><div class="nn">3</div><div><div class="nt">Plan card design</div><div class="nb">A redesign of the plan comparison cards — improving visual hierarchy and making download CTAs more prominent — increased both document downloads and plan comparison sessions, leading to measurable improvement in time-to-contract for users who engaged with the comparison features.</div></div></div>
     <div class="ni"><div class="nn">4</div><div><div class="nt">Flow compression</div><div class="nb">After reducing the number of interactions on several screens, task completion time remained constant but user-reported perception of the process improved significantly. Users described the flow as 'faster' and 'simpler' even though the clock time hadn't changed — a reminder that perceived effort is as important as measured effort.</div></div></div>
   </div>
-  <div class="iimg"><div class="iiml">Examples of A/B tests — results page and plan cards</div><div class="iimc">Variants of results page and plan card redesign</div></div>
+  <div class="cs-img-group">
+    <img src="../files/esencial/Esencial-8.png" alt="Esencial — A/B test results page" class="cs-img" style="margin:0">
+    <img src="../files/esencial/Esencial-9.png" alt="Esencial — plan card redesign" class="cs-img" style="margin:0">
+  </div>
   <div class="sh"><span class="shn">05</span> Design system</div>
   <div class="bt">As scope grew to include the member portal, back office, and multiple communication touchpoints, I led the definition and documentation of our Figma component library — naming conventions, interaction states, responsive behavior, and documentation standards.</div>
-  <div class="iimg"><div class="iiml">Component library in Figma — partial capture</div><div class="iimc">Component system with documented states for handoff to development</div></div>
+  <div class="cs-img-group">
+    <img src="../files/esencial/Esencial-11.png" alt="Esencial — component library in Figma" class="cs-img" style="margin:0">
+    <img src="../files/esencial/Esencial-12.png" alt="Esencial — component states and documentation" class="cs-img" style="margin:0">
+    <img src="../files/esencial/Esencial-13.png" alt="Esencial — design system detail" class="cs-img" style="margin:0">
+    <img src="../files/esencial/Esencial-14.png" alt="Esencial — handoff documentation" class="cs-img" style="margin:0">
+  </div>
   <div class="sh"><span class="shn">06</span> Results</div>
   <div class="rg">
     <div class="rc"><div class="rn">6 mo.</div><div class="rl">Time to full product launch</div><div class="rd">From blank canvas to production product</div></div>
